@@ -8,6 +8,8 @@ def menue() -> None:
     """
     print(f"{rat_img_msg}")
     flag = True
+
+    layout: dict = {}
     while flag:
         print(choice_layout_msg)
         print(choice_exit_from_program)
@@ -18,15 +20,18 @@ def menue() -> None:
             choice_data = int(input("--> "))
         except:
             print(error_input_data)
-            continue
+            
         
         if choice_data == 0:
             break
         elif choice_data == 1:
-            choice_layout_keyboard()
-        else: print(error_input_data); continue
+            layout = choice_layout_keyboard()
+            if layout == None:
+                print(error_take_layout)
+                break
+        else: print(error_input_data); 
 
-def choice_layout_keyboard() -> None:
+def choice_layout_keyboard() -> None | dict:
     """
     Метод реализует выбор раскладки из базы или из файла.
     """
@@ -34,23 +39,26 @@ def choice_layout_keyboard() -> None:
     while flag_layout:
         print(choice_take_layout_from_file)
         print(choice_take_layout_from_db)
-        print(choice_exit_from_program)
+        print(choice_back_in_privius_menue)
     
-    choice_data = -10
+        choice_data = -10
 
-    try:
-        choice_data = int(input("--> "))
-    except:
-        print(error_input_data)
-        continue
+        try:
+            choice_data = int(input("--> "))
+        except:
+            print(error_input_data)
+            
+        layout: dict = None
 
-    if choice_data == 0:
-        break
-    elif choice_data == 1:
-        read_layout()
-    elif choice_data == 2:
-        take_lk_from_db()
-    else: print(error_input_data); continue
+        if choice_data == 0:
+            break
+        elif choice_data == 1:
+            layout = read_kl()
+            return layout
+        elif choice_data == 2:
+            layout = take_lk_from_db()
+            return layout
+        else: print(error_input_data);
 
 def main() -> None:
     menue()

@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-def read_kl(filename: str) -> dict | None:
-    try:
-        with open(filename, "+r") as file:
-            pass
-        return {}
-    except Exception:
-        return None
-=======
 import json
 import csv
 import os
@@ -357,4 +348,3 @@ if __name__ == "__main__":
     if errors:
         for error in errors:
             print(f"  - {error}")
->>>>>>> b4fcbad (change last commit)

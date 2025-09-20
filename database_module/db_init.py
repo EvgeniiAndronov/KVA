@@ -40,8 +40,12 @@ def make_mok_data(start_letter: str, name_test_lk: str):
     cursor = conn.cursor()
 
     for i in range(26):
-        cursor.execute("insert into lk (name_lk, letter, error) VALUES (?, ?, ?)", (f"{name_test_lk}", f"{chr(ord(f"{start_letter}") + i)}", i))
+        cursor.execute("insert into lk (name_lk, letter, error) VALUES (?, ?, ?)",
+                       (f"{name_test_lk}", f"{chr(ord(f"{start_letter}") + i)}", i))
 
+    for i in range(10):
+        cursor.execute("insert into lk (name_lk, letter, error) VALUES (?, ?, ?)",
+                       (f"{name_test_lk}", f"{chr(ord(f"1") + i)}", i))
 
     conn.commit()
     conn.close()

@@ -12,3 +12,9 @@ wheels/
 .vscode
 
 *.db
+.kiro
+.pytest_cache
+.idea
+FEATURES_README.md
+reports/
+rockyou.txt

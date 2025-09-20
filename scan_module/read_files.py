@@ -4,7 +4,7 @@ def get_words_from_file(filename: str) -> list:
         lines = file.readlines()
 
     for line in lines:
-        all_words_from_file.append(line.strip().split())
+        all_words_from_file.append(line.strip())
 
     return all_words_from_file
 

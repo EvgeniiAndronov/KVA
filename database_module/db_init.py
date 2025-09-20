@@ -39,7 +39,7 @@ def make_mok_data(start_letter: str, name_test_lk: str):
     conn = sqlite3.connect("database.db")
     cursor = conn.cursor()
 
-    for i in range(10):
+    for i in range(26):
         cursor.execute("insert into lk (name_lk, letter, error) VALUES (?, ?, ?)", (f"{name_test_lk}", f"{chr(ord(f"{start_letter}") + i)}", i))
 
 

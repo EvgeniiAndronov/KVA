@@ -18,7 +18,11 @@ choice_back_in_privius_menue = "0) Вернуться назад."
 choice_take_layout_from_file = "1) Загрузить раскладку из файла."
 choice_take_layout_from_db = "2) Выбрать имеющуюся раскладку."
 
+make_choice_lk = "Выберете раскладку."
+
 what_layout_have_db = "В базе записаны раскладки:\n"
 
 error_input_data = "\nВведенные параметры некорректны.\n"
 error_take_layout = "\nПроизлшла ошибка при попытке чтения из файла или базы данных."
+
+file_name_to_read = "Введите имя файла для чтения раскладки через полный путь: "

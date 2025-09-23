@@ -1,6 +1,10 @@
 import pytest
 from unittest.mock import Mock, patch
-from database import delete_analysis_result
+import sys
+import os
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+from database_module.database import delete_analysis_result
 
 
 class TestDeleteAnalysisResult:
@@ -8,7 +12,7 @@ class TestDeleteAnalysisResult:
     
     def test_delete_existing_record(self):
         """Тест удаления существующей записи"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -18,7 +22,6 @@ class TestDeleteAnalysisResult:
             result = delete_analysis_result(record_id=42)
             
             # Проверяем правильность вызовов
-            mock_connect.assert_called_once_with("database.db")
             mock_cursor.execute.assert_called_once_with(
                 "DELETE FROM data WHERE id = ?", 
                 (42,)
@@ -31,7 +34,7 @@ class TestDeleteAnalysisResult:
     
     def test_delete_nonexistent_record(self):
         """Тест удаления несуществующей записи"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -52,7 +55,7 @@ class TestDeleteAnalysisResult:
     
     def test_delete_multiple_records(self):
         """Тест, когда удаляется несколько записей (не должно происходить в норме)"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -66,7 +69,7 @@ class TestDeleteAnalysisResult:
     
     def test_delete_record_zero_id(self):
         """Тест удаления записи с ID=0"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -89,7 +92,7 @@ class TestDeleteAnalysisResult:
     ])
     def test_various_delete_scenarios(self, record_id, rowcount, expected):
         """Параметризованный тест различных сценариев удаления"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn

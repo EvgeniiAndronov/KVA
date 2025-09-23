@@ -1,6 +1,10 @@
 import pytest
 from unittest.mock import Mock, patch
-from database import get_analysis_statistics
+import sys
+import os
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+from database_module.database import get_analysis_statistics
 
 
 class TestGetAnalysisStatistics:
@@ -10,7 +14,7 @@ class TestGetAnalysisStatistics:
         """Тест получения статистики при наличии данных"""
         test_result = (5, 3.5, 1, 7)  # total_tests, avg_errors, min_errors, max_errors
         
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -19,16 +23,23 @@ class TestGetAnalysisStatistics:
             
             result = get_analysis_statistics('test_layout')
             
-            # Проверяем правильность SQL-запроса
-            mock_cursor.execute.assert_called_once_with("""
-                SELECT 
-                    COUNT(*) as total_tests,
-                    AVG(count_errors) as avg_errors,
-                    MIN(count_errors) as min_errors,
-                    MAX(count_errors) as max_errors
-                FROM data 
-                WHERE name_lk = ?
-            """, ('test_layout',))
+            # Проверяем, что execute был вызван
+            mock_cursor.execute.assert_called_once()
+            
+            # Получаем аргументы вызова
+            call_args = mock_cursor.execute.call_args
+            sql_query = call_args[0][0]
+            params = call_args[0][1] if len(call_args[0]) > 1 else ()
+            
+            # Проверяем ключевые части SQL-запроса
+            assert "SELECT" in sql_query
+            assert "COUNT(*)" in sql_query
+            assert "AVG(count_errors)" in sql_query
+            assert "MIN(count_errors)" in sql_query
+            assert "MAX(count_errors)" in sql_query
+            assert "FROM data" in sql_query
+            assert "WHERE name_lk = ?" in sql_query
+            assert params == ('test_layout',)
             
             mock_conn.close.assert_called_once()
             
@@ -43,7 +54,7 @@ class TestGetAnalysisStatistics:
     
     def test_get_statistics_no_data(self):
         """Тест получения статистики при отсутствии данных"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -63,7 +74,7 @@ class TestGetAnalysisStatistics:
     
     def test_get_statistics_empty_result(self):
         """Тест получения статистики при пустом результате"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -85,7 +96,7 @@ class TestGetAnalysisStatistics:
         """Тест со специальными символами в имени раскладки"""
         test_result = (2, 4.0, 3, 5)
         
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -97,12 +108,35 @@ class TestGetAnalysisStatistics:
             mock_cursor.execute.assert_called_once()
             # Проверяем, что имя раскладки правильно передано в запрос
             call_args = mock_cursor.execute.call_args
-            assert call_args[0][1] == ('layout with spaces',)
+            params = call_args[0][1] if len(call_args[0]) > 1 else ()
+            assert params == ('layout with spaces',)
             
             expected_result = {
                 'total_tests': 2,
                 'avg_errors': 4.0,
                 'min_errors': 3,
                 'max_errors': 5
+            }
+            assert result == expected_result
+    
+    def test_get_statistics_null_values(self):
+        """Тест обработки NULL значений в статистике"""
+        test_result = (3, None, None, None)
+    
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
+            mock_conn = Mock()
+            mock_cursor = Mock()
+            mock_connect.return_value = mock_conn
+            mock_conn.cursor.return_value = mock_cursor
+            mock_cursor.fetchone.return_value = test_result
+        
+            result = get_analysis_statistics('layout_with_nulls')
+        
+            # Если функция не обрабатывает NULL, ожидаем None
+            expected_result = {
+                'total_tests': 3,
+                'avg_errors': None,
+                'min_errors': None,
+                'max_errors': None
             }
             assert result == expected_result

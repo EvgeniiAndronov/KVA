@@ -1,6 +1,10 @@
 import pytest
 from unittest.mock import Mock, patch
-from database import get_analysis_history
+import sys
+import os
+
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+from database_module.database import get_analysis_history
 
 
 class TestGetAnalysisHistory:
@@ -14,7 +18,7 @@ class TestGetAnalysisHistory:
             (3, 'layout1', 7, 'words|file3.txt|150w|750c')
         ]
         
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -39,7 +43,7 @@ class TestGetAnalysisHistory:
             (3, 'layout1', 7, 'words|file3.txt|150w|750c')
         ]
         
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -63,7 +67,7 @@ class TestGetAnalysisHistory:
             (2, 'layout2', 3, 'text|file2.txt|50w|250c')
         ]
         
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -82,7 +86,7 @@ class TestGetAnalysisHistory:
     
     def test_get_history_empty(self):
         """Тест получения пустой истории"""
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn
@@ -99,7 +103,7 @@ class TestGetAnalysisHistory:
             (5, 'specific_layout', 2, 'text|file.txt|10w|50c')
         ]
         
-        with patch('database.sqlite3.connect') as mock_connect:
+        with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
             mock_connect.return_value = mock_conn

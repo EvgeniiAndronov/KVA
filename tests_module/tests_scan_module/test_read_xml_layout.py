@@ -1,8 +1,5 @@
 import os
 import unittest
-import sys
-sys.path.append('../../scan_module')
-from read_layout import _read_xml_layout
 
 class TestReadXmlLayout(unittest.TestCase):
     
@@ -14,6 +11,7 @@ class TestReadXmlLayout(unittest.TestCase):
             os.remove(self.test_file)
     
     def test_standard_xml_format(self):
+        from scan_module.read_layout import _read_xml_layout
         xml_content = '''<?xml version="1.0"?>
         <layout>
             <key symbol="a" error="1"/>
@@ -28,6 +26,7 @@ class TestReadXmlLayout(unittest.TestCase):
         self.assertEqual(result, {"a": 1.0, "b": 2.0, "c": 3.0})
     
     def test_alternative_attributes(self):
+        from scan_module.read_layout import _read_xml_layout
         xml_content = '''<?xml version="1.0"?>
         <layout>
             <key char="a" value="1"/>
@@ -41,6 +40,7 @@ class TestReadXmlLayout(unittest.TestCase):
         self.assertEqual(result, {"a": 1.0, "b": 2.0})
     
     def test_empty_xml(self):
+        from scan_module.read_layout import _read_xml_layout
         xml_content = '''<?xml version="1.0"?>
         <layout>
         </layout>'''

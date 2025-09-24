@@ -1,9 +1,6 @@
 import os
 import unittest
 import json
-import sys
-sys.path.append('../../scan_module')
-from read_layout import _read_json_layout
 
 class TestReadJsonLayout(unittest.TestCase):
     
@@ -15,6 +12,7 @@ class TestReadJsonLayout(unittest.TestCase):
             os.remove(self.test_file)
     
     def test_direct_layout(self):
+        from scan_module.read_layout import _read_json_layout
         layout_data = {"a": 1, "b": 2, "c": 3}
         with open(self.test_file, "w", encoding="utf-8") as f:
             json.dump(layout_data, f)
@@ -23,6 +21,7 @@ class TestReadJsonLayout(unittest.TestCase):
         self.assertEqual(result, layout_data)
     
     def test_nested_layout(self):
+        from scan_module.read_layout import _read_json_layout
         layout_data = {"layout": {"a": 1, "b": 2}}
         with open(self.test_file, "w", encoding="utf-8") as f:
             json.dump(layout_data, f)
@@ -31,6 +30,7 @@ class TestReadJsonLayout(unittest.TestCase):
         self.assertEqual(result, {"a": 1, "b": 2})
     
     def test_invalid_json_format(self):
+        from scan_module.read_layout import _read_json_layout
         with open(self.test_file, "w", encoding="utf-8") as f:
             f.write("invalid json content")
         

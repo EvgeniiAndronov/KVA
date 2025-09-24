@@ -1,9 +1,6 @@
 import os
 import unittest
 import json
-import sys
-sys.path.append('../../scan_module')
-from read_layout import read_kl
 
 class TestReadKl(unittest.TestCase):
     
@@ -28,14 +25,17 @@ class TestReadKl(unittest.TestCase):
                 os.remove(file)
     
     def test_read_json_layout(self):
+        from scan_module.read_layout import read_kl
         layout = read_kl(self.json_file)
         self.assertEqual(layout, {"a": 1, "b": 2})
     
     def test_read_csv_layout(self):
+        from scan_module.read_layout import read_kl
         layout = read_kl(self.csv_file)
         self.assertEqual(layout, {"a": 1.0, "b": 2.0})
     
     def test_read_nonexistent_file(self):
+        from scan_module.read_layout import read_kl
         layout = read_kl("nonexistent.kl")
         self.assertIsNone(layout)
 

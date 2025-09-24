@@ -1,9 +1,6 @@
 import os
 import unittest
 from unittest.mock import patch
-import sys
-sys.path.append('../../scan_module')
-from read_files import get_file_size_mb
 
 class TestGetFileSizeMb(unittest.TestCase):
     
@@ -17,15 +14,18 @@ class TestGetFileSizeMb(unittest.TestCase):
             os.remove(self.test_file)
     
     def test_get_file_size_existing_file(self):
+        from scan_module.read_files import get_file_size_mb
         size = get_file_size_mb(self.test_file)
         self.assertGreaterEqual(size, 0)
         self.assertIsInstance(size, float)
     
     def test_get_file_size_nonexistent_file(self):
+        from scan_module.read_files import get_file_size_mb
         size = get_file_size_mb("nonexistent_file.txt")
         self.assertEqual(size, 0)
     
     def test_get_file_size_large_file(self):
+        from scan_module.read_files import get_file_size_mb
         with open("large_test_file.txt", "wb") as f:
             f.write(b"0" * 1024 * 1024)  # 1MB file
         

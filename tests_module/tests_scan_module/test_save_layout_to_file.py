@@ -2,9 +2,6 @@ import os
 import unittest
 import json
 import csv
-import sys
-sys.path.append('../../scan_module')
-from read_layout import save_layout_to_file
 
 class TestSaveLayoutToFile(unittest.TestCase):
     
@@ -23,6 +20,7 @@ class TestSaveLayoutToFile(unittest.TestCase):
                 os.remove(file)
     
     def test_save_json(self):
+        from scan_module.read_layout import save_layout_to_file
         result = save_layout_to_file(self.test_layout, self.test_files["json"], "json")
         self.assertTrue(result)
         
@@ -32,6 +30,7 @@ class TestSaveLayoutToFile(unittest.TestCase):
         self.assertEqual(content["layout"], self.test_layout)
     
     def test_save_csv(self):
+        from scan_module.read_layout import save_layout_to_file
         result = save_layout_to_file(self.test_layout, self.test_files["csv"], "csv")
         self.assertTrue(result)
         
@@ -43,6 +42,7 @@ class TestSaveLayoutToFile(unittest.TestCase):
         self.assertEqual(len(rows), 4)  # header + 3 rows
     
     def test_save_txt(self):
+        from scan_module.read_layout import save_layout_to_file
         result = save_layout_to_file(self.test_layout, self.test_files["txt"], "txt")
         self.assertTrue(result)
         

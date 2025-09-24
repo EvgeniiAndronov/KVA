@@ -1,8 +1,5 @@
 import os
 import unittest
-import sys
-sys.path.append('../../scan_module')
-from read_files import count_characters_in_file
 
 class TestCountCharactersInFile(unittest.TestCase):
     
@@ -14,6 +11,7 @@ class TestCountCharactersInFile(unittest.TestCase):
             os.remove(self.test_file)
     
     def test_count_characters_ascii(self):
+        from scan_module.read_files import count_characters_in_file
         content = "abcdefghij"
         with open(self.test_file, "w", encoding="utf-8") as f:
             f.write(content)
@@ -22,6 +20,7 @@ class TestCountCharactersInFile(unittest.TestCase):
         self.assertEqual(count, len(content))
     
     def test_count_characters_unicode(self):
+        from scan_module.read_files import count_characters_in_file
         content = "абвгд€¥£"
         with open(self.test_file, "w", encoding="utf-8") as f:
             f.write(content)
@@ -30,6 +29,7 @@ class TestCountCharactersInFile(unittest.TestCase):
         self.assertEqual(count, len(content))
     
     def test_count_characters_empty_file(self):
+        from scan_module.read_files import count_characters_in_file
         with open(self.test_file, "w", encoding="utf-8") as f:
             f.write("")
         

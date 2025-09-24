@@ -1,8 +1,5 @@
 import os
 import unittest
-import sys
-sys.path.append('../../scan_module')
-from read_files import count_lines_in_file
 
 class TestCountLinesInFile(unittest.TestCase):
     
@@ -14,6 +11,7 @@ class TestCountLinesInFile(unittest.TestCase):
             os.remove(self.test_file)
     
     def test_count_lines_with_content(self):
+        from scan_module.read_files import count_lines_in_file
         with open(self.test_file, "w", encoding="utf-8") as f:
             f.write("line1\nline2\nline3\n")
         
@@ -21,6 +19,7 @@ class TestCountLinesInFile(unittest.TestCase):
         self.assertEqual(count, 3)
     
     def test_count_lines_empty_file(self):
+        from scan_module.read_files import count_lines_in_file
         with open(self.test_file, "w", encoding="utf-8") as f:
             f.write("")
         
@@ -28,6 +27,7 @@ class TestCountLinesInFile(unittest.TestCase):
         self.assertEqual(count, 0)
     
     def test_count_lines_with_blank_lines(self):
+        from scan_module.read_files import count_lines_in_file
         with open(self.test_file, "w", encoding="utf-8") as f:
             f.write("line1\n\nline2\n  \nline3\n")
         

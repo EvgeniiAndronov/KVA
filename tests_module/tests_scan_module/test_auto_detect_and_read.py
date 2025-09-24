@@ -1,9 +1,6 @@
 import os
 import unittest
 import json
-import sys
-sys.path.append('../../scan_module')
-from read_layout import _auto_detect_and_read
 
 class TestAutoDetectAndRead(unittest.TestCase):
     
@@ -20,6 +17,7 @@ class TestAutoDetectAndRead(unittest.TestCase):
                 os.remove(file)
     
     def test_detect_json(self):
+        from scan_module.read_layout import _auto_detect_and_read
         with open(self.test_files["json"], "w", encoding="utf-8") as f:
             json.dump({"a": 1, "b": 2}, f)
         
@@ -27,6 +25,7 @@ class TestAutoDetectAndRead(unittest.TestCase):
         self.assertEqual(result, {"a": 1, "b": 2})
     
     def test_detect_csv(self):
+        from scan_module.read_layout import _auto_detect_and_read
         with open(self.test_files["csv"], "w", encoding="utf-8") as f:
             f.write("a,1\nb,2\n")
         
@@ -34,6 +33,7 @@ class TestAutoDetectAndRead(unittest.TestCase):
         self.assertEqual(result, {"a": 1.0, "b": 2.0})
     
     def test_detect_text_fallback(self):
+        from scan_module.read_layout import _auto_detect_and_read
         with open(self.test_files["txt"], "w", encoding="utf-8") as f:
             f.write("a:1\nb:2\n")
         

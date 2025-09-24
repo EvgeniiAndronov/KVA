@@ -1,8 +1,5 @@
 import os
 import unittest
-import sys
-sys.path.append('../../scan_module')
-from read_files import get_text_from_file
 
 class TestGetTextFromFile(unittest.TestCase):
     
@@ -17,14 +14,17 @@ class TestGetTextFromFile(unittest.TestCase):
             os.remove(self.small_file)
     
     def test_get_text_normal_case(self):
+        from scan_module.read_files import get_text_from_file
         text = get_text_from_file(self.small_file)
         self.assertEqual(text, self.content)
     
     def test_get_text_file_not_found(self):
+        from scan_module.read_files import get_text_from_file
         with self.assertRaises(FileNotFoundError):
             get_text_from_file("nonexistent.txt")
     
     def test_get_text_encoding_fallback(self):
+        from scan_module.read_files import get_text_from_file
         text = get_text_from_file(self.small_file)
         self.assertIn("test content", text)
 

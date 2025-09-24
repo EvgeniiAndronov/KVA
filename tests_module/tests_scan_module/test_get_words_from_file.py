@@ -1,8 +1,5 @@
 import os
 import unittest
-import sys
-sys.path.append('../../scan_module')
-from read_files import get_words_from_file
 
 class TestGetWordsFromFile(unittest.TestCase):
     
@@ -16,10 +13,12 @@ class TestGetWordsFromFile(unittest.TestCase):
             os.remove(self.small_file)
     
     def test_get_words_normal_case(self):
+        from scan_module.read_files import get_words_from_file
         words = get_words_from_file(self.small_file)
         self.assertEqual(words, ["word1", "word2", "word3"])
     
     def test_get_words_with_empty_lines(self):
+        from scan_module.read_files import get_words_from_file
         with open(self.small_file, "w", encoding="utf-8") as f:
             f.write("word1\n\nword2\n\nword3\n")
         
@@ -27,6 +26,7 @@ class TestGetWordsFromFile(unittest.TestCase):
         self.assertEqual(words, ["word1", "word2", "word3"])
     
     def test_get_words_file_not_found(self):
+        from scan_module.read_files import get_words_from_file
         with self.assertRaises(FileNotFoundError):
             get_words_from_file("nonexistent.txt")
 

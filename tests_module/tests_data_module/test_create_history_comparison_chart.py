@@ -10,11 +10,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_plot import create_history_comparison_chart
 
 class TestCreateHistoryComparisonChart:
-    """Тесты для функции create_history_comparison_chart"""
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_history_comparison_chart_success(self, mock_connect):
-        """Тест успешного создания графика истории"""
+        """
+        Тест, который проверяет успешное создание 
+        графика истории ошибок
+        """
         # Мокаем соединение с БД
         mock_conn = Mock()
         mock_cursor = Mock()
@@ -40,7 +42,10 @@ class TestCreateHistoryComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_history_comparison_chart_insufficient_data(self, mock_connect):
-        """Тест с недостаточным количеством данных"""
+        """
+        Тест, который проверяет обработку 
+        недостаточного количества данных
+        """
         mock_conn = Mock()
         mock_cursor = Mock()
         mock_connect.return_value = mock_conn
@@ -57,7 +62,10 @@ class TestCreateHistoryComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_history_comparison_chart_db_error(self, mock_connect):
-        """Тест обработки ошибки базы данных"""
+        """
+        Тест, который проверяет обработку ошибки 
+        базы данных
+        """
         mock_connect.side_effect = sqlite3.Error("DB connection error")
         
         file_path = create_history_comparison_chart(

@@ -7,10 +7,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'processi
 from calculate_data import make_text_processing
 
 class TestMakeTextProcessing:
-    """Тесты для функции make_text_processing"""
     
     def test_make_text_processing_basic(self):
-        """Тест базовой обработки текста"""
+        """
+        Тест, который проверяет базовую обработку 
+        текста
+        """
         text = "тест пример"
         rules = {'т': 1, 'е': 0, 'с': 2, ' ': 0, 'п': 2, 'р': 1, 'и': 0, 'м': 1}
         
@@ -32,7 +34,10 @@ class TestMakeTextProcessing:
         assert result['avg_errors_per_char'] == pytest.approx(9/11, 0.01)
     
     def test_make_text_processing_with_unknown_chars(self):
-        """Тест обработки текста с неизвестными символами"""
+        """
+        Тест, который проверяет обработку текста с 
+        неизвестными символами
+        """
         text = "hello world"
         rules = {'h': 1, 'e': 0, 'l': 2, 'o': 1}  # w, r, d, пробел - неизвестны
         
@@ -52,7 +57,10 @@ class TestMakeTextProcessing:
         assert result['unknown_characters'] == {' ', 'w', 'r', 'd'}
     
     def test_make_text_processing_empty_text(self):
-        """Тест обработки пустого текста"""
+        """
+        Тест, который проверяет обработку пустого 
+        текста
+        """
         text = ""
         rules = {'a': 1, 'b': 2}
         
@@ -68,7 +76,10 @@ class TestMakeTextProcessing:
         assert result['text_type'] == 'continuous'
     
     def test_make_text_processing_large_text_raises_error(self):
-        """Тест что большие тексты вызывают ошибку"""
+        """
+        Тест, который проверяет обработку слишком 
+        больших текстов
+        """
         text = "x" * 100001  # 100001 символов
         rules = {'x': 1}
         

@@ -8,10 +8,12 @@ from database_module.database import take_lk_from_db
 
 
 class TestTakeLkFromDb:
-    """Тесты для функции take_lk_from_db"""
     
     def test_take_lk_from_db_success(self):
-        """Тест успешного получения раскладки"""
+        """
+        Тест, который проверяет успешное 
+        получение раскладки из БД
+        """
         test_data = [
             ('a', 1), ('b', 2), ('c', 3), ('d', 4), ('e', 5),
             ('f', 6), ('g', 7), ('h', 8), ('i', 9), ('j', 10),
@@ -31,7 +33,10 @@ class TestTakeLkFromDb:
             assert result == expected_result
     
     def test_take_lk_from_db_insufficient_data(self):
-        """Тест с недостаточным количеством данных"""
+        """
+        Тест, который проверяет обработку 
+        недостаточного количества данных
+        """
         test_data = [('a', 1), ('b', 2)]  # Всего 2 записи
         
         with patch('database_module.database.sqlite3.connect') as mock_connect:
@@ -45,7 +50,10 @@ class TestTakeLkFromDb:
             assert result is None
     
     def test_take_lk_from_db_no_data(self):
-        """Тест, когда данных нет"""
+        """
+        Тест, который проверяет поведение 
+        при полном отсутствии данных
+        """
         with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()

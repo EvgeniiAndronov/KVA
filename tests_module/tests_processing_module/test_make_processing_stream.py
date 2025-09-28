@@ -7,10 +7,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'processi
 from calculate_data import make_processing_stream
 
 class TestMakeProcessingStream:
-    """Тесты для функции make_processing_stream"""
     
     def test_make_processing_stream_basic(self):
-        """Тест базовой функциональности потоковой обработки"""
+        """
+        Тест, который проверяет базовую функциональность 
+        потоковой обработки
+        """
         def word_generator():
             yield ["тест", "слово"]
             yield ["пример"]
@@ -34,7 +36,10 @@ class TestMakeProcessingStream:
             assert mock_pbar.close.called
     
     def test_make_processing_stream_with_unknown_chars(self):
-        """Тест потоковой обработки с неизвестными символами"""
+        """
+        Тест, который проверяет потоковую обработку 
+        с неизвестными символами
+        """
         def word_generator():
             yield ["abc", "def"]
             yield ["ghi"]
@@ -57,7 +62,9 @@ class TestMakeProcessingStream:
             assert result['unknown_characters'] == {'d', 'e', 'f', 'g', 'h', 'i'}
     
     def test_make_processing_stream_empty_generator(self):
-        """Тест с пустым генератором"""
+        """
+        Тест, который проверяет обработку пустого генератора
+        """
         def empty_generator():
             yield from []
         

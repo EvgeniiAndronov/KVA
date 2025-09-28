@@ -6,6 +6,10 @@ import csv
 class TestSaveLayoutToFile(unittest.TestCase):
     
     def setUp(self):
+        """
+        Подготавливает тестовые данные 
+        перед каждым тестом
+        """
         self.test_layout = {"a": 1.5, "b": 2.0, "c": 3.7}
         self.test_files = {
             "json": "test_output.json",
@@ -15,11 +19,18 @@ class TestSaveLayoutToFile(unittest.TestCase):
         }
     
     def tearDown(self):
+        """
+        Очищает ресурсы после каждого теста
+        """
         for file in self.test_files.values():
             if os.path.exists(file):
                 os.remove(file)
     
     def test_save_json(self):
+        """
+        Тест, который проверяет сохранение 
+        раскладки в JSON-формат
+        """
         from scan_module.read_layout import save_layout_to_file
         result = save_layout_to_file(self.test_layout, self.test_files["json"], "json")
         self.assertTrue(result)
@@ -30,6 +41,10 @@ class TestSaveLayoutToFile(unittest.TestCase):
         self.assertEqual(content["layout"], self.test_layout)
     
     def test_save_csv(self):
+        """
+        Тест, который проверяет сохранение 
+        раскладки в CSV-формат
+        """
         from scan_module.read_layout import save_layout_to_file
         result = save_layout_to_file(self.test_layout, self.test_files["csv"], "csv")
         self.assertTrue(result)
@@ -42,6 +57,10 @@ class TestSaveLayoutToFile(unittest.TestCase):
         self.assertEqual(len(rows), 4)  # header + 3 rows
     
     def test_save_txt(self):
+        """
+        Тест, который проверяет сохранение 
+        раскладки в текстовом формате
+        """
         from scan_module.read_layout import save_layout_to_file
         result = save_layout_to_file(self.test_layout, self.test_files["txt"], "txt")
         self.assertTrue(result)

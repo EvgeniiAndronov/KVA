@@ -9,10 +9,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_plot import _create_coverage_pie_chart
 
 class TestCreateCoveragePieChart:
-    """Тесты для функции _create_coverage_pie_chart"""
     
     def test_create_coverage_pie_chart_success(self):
-        """Тест успешного создания круговой диаграммы"""
+        """
+        Тест, который проверяет успешное создание 
+        круговой диаграммы покрытия символов
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 100,
@@ -42,7 +44,10 @@ class TestCreateCoveragePieChart:
                 assert file_path is None
     
     def test_create_coverage_pie_chart_minimal_data(self):
-        """Тест с минимальными корректными данными"""
+        """
+        Тест, который проверяет создание диаграммы 
+        с минимальными корректными данными
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 1,
@@ -67,7 +72,10 @@ class TestCreateCoveragePieChart:
             assert file_path is None or os.path.exists(file_path)
     
     def test_create_coverage_pie_chart_full_coverage(self):
-        """Тест с полным покрытием символов"""
+        """
+        Тест, который проверяет создание диаграммы 
+        с полным покрытием символов
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 0,
@@ -94,7 +102,10 @@ class TestCreateCoveragePieChart:
     @patch('make_export_plot.plt.savefig')
     @patch('make_export_plot.plt.pie')
     def test_create_coverage_pie_chart_exception(self, mock_pie, mock_savefig):
-        """Тест обработки исключения при создании диаграммы"""
+        """
+        Тест, который проверяет обработку исключения 
+        при создании диаграммы
+        """
         # Создаем реальное исключение при вызове pie()
         mock_pie.side_effect = Exception("Real plot error")
         

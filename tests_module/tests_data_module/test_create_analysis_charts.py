@@ -9,13 +9,15 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_plot import create_analysis_charts
 
 class TestCreateAnalysisCharts:
-    """Тесты для функции create_analysis_charts"""
     
     @patch('make_export_plot._create_coverage_pie_chart')
     @patch('make_export_plot._create_error_distribution_chart')
     @patch('make_export_plot._create_metrics_comparison_chart')
     def test_create_analysis_charts_success(self, mock_metrics, mock_error, mock_coverage):
-        """Тест успешного создания всех графиков"""
+        """
+        Тест, который проверяет успешное создание 
+        всех графиков анализа
+        """
         mock_coverage.return_value = "/path/coverage.png"
         mock_error.return_value = "/path/error.png"
         mock_metrics.return_value = "/path/metrics.png"
@@ -49,7 +51,10 @@ class TestCreateAnalysisCharts:
     @patch('make_export_plot._create_error_distribution_chart')
     @patch('make_export_plot._create_metrics_comparison_chart')
     def test_create_analysis_charts_partial_success(self, mock_metrics, mock_error, mock_coverage):
-        """Тест когда создаются не все графики"""
+        """
+        Тест, который проверяет создание графиков 
+        при частичном успехе
+        """
         mock_coverage.return_value = "/path/coverage.png"
         mock_error.return_value = None  # ошибка при создании
         mock_metrics.return_value = "/path/metrics.png"
@@ -78,7 +83,10 @@ class TestCreateAnalysisCharts:
     @patch('make_export_plot._create_error_distribution_chart')
     @patch('make_export_plot._create_metrics_comparison_chart')
     def test_create_analysis_charts_minimal_data(self, mock_metrics, mock_error, mock_coverage):
-        """Тест с минимальными корректными данными"""
+        """
+        Тест, который проверяет создание графиков 
+        с минимальными корректными данными
+        """
         mock_coverage.return_value = "/path/coverage.png"
         mock_error.return_value = "/path/error.png"
         mock_metrics.return_value = "/path/metrics.png"

@@ -7,10 +7,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'processi
 from calculate_data import make_processing
 
 class TestMakeProcessing:
-    """Тесты для функции make_processing"""
     
     def test_make_processing_basic(self):
-        """Тест базовой функциональности"""
+        """
+        Тест, который проверяет базовую 
+        функциональность обработки слов
+        """
         wordlist = ["тест", "слово", "пример"]
         rules = {'т': 1, 'е': 0, 'с': 2, 'л': 1, 'о': 0, 'в': 1, 'п': 2, 'р': 1, 'и': 0, 'м': 1}
         
@@ -31,7 +33,10 @@ class TestMakeProcessing:
         assert result['avg_errors_per_char'] == pytest.approx(13/15, 0.01)
     
     def test_make_processing_with_unknown_chars(self):
-        """Тест с неизвестными символами"""
+        """
+        Тест, который проверяет обработку 
+        слов с неизвестными символами
+        """
         wordlist = ["test", "word"]
         rules = {'t': 1, 'e': 0, 's': 2}  # отсутствуют w, o, r, d
         
@@ -52,7 +57,10 @@ class TestMakeProcessing:
         assert result['avg_errors_per_char'] == 1.0
     
     def test_make_processing_empty_wordlist(self):
-        """Тест с пустым списком слов"""
+        """
+        Тест, который проверяет обработку пустого 
+        списка слов
+        """
         wordlist = []
         rules = {'a': 1, 'b': 2}
         
@@ -67,7 +75,10 @@ class TestMakeProcessing:
         assert result['avg_errors_per_char'] == 0
     
     def test_make_processing_large_list_raises_error(self):
-        """Тест что большие списки вызывают ошибку"""
+        """
+        Тест, который проверяет обработку слишком 
+        больших списков слов
+        """
         wordlist = ["word"] * 10001  # 10001 слов
         rules = {'w': 1, 'o': 1, 'r': 1, 'd': 1}
         

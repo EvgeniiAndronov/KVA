@@ -10,10 +10,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_file import create_csv_report
 
 class TestCreateCSVReport:
-    """Тесты для функции create_csv_report"""
     
     def test_create_csv_report_success(self):
-        """Тест успешного создания CSV отчета"""
+        """
+        Тест, который проверяет успешное создание 
+        CSV отчета
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 1500,
@@ -44,7 +46,10 @@ class TestCreateCSVReport:
                 assert "1500" in content  # total_errors
     
     def test_create_csv_report_empty_unknown_chars(self):
-        """Тест создания отчета без неизвестных символов"""
+        """
+        Тест, который проверяет создание отчета без 
+        неизвестных символов
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 0,
@@ -72,7 +77,10 @@ class TestCreateCSVReport:
                 assert "ОТЛИЧНО" in content  # оценка качества
     
     def test_create_csv_report_directory_creation(self):
-        """Тест создания директории если её нет"""
+        """
+        Тест, который проверяет создание директории 
+        если её нет
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             new_dir = os.path.join(temp_dir, "new_subdir")
             

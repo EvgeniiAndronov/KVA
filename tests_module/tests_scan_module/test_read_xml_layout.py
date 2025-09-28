@@ -4,13 +4,24 @@ import unittest
 class TestReadXmlLayout(unittest.TestCase):
     
     def setUp(self):
+        """
+        Создает имя тестового XML-файла
+        """
         self.test_file = "test_xml.xml"
     
     def tearDown(self):
+        """
+        Удаляет тестовый файл после 
+        выполнения теста
+        """
         if os.path.exists(self.test_file):
             os.remove(self.test_file)
     
     def test_standard_xml_format(self):
+        """
+        Тест, который проверяет чтение 
+        стандартного XML-формата
+        """
         from scan_module.read_layout import _read_xml_layout
         xml_content = '''<?xml version="1.0"?>
         <layout>
@@ -26,6 +37,10 @@ class TestReadXmlLayout(unittest.TestCase):
         self.assertEqual(result, {"a": 1.0, "b": 2.0, "c": 3.0})
     
     def test_alternative_attributes(self):
+        """
+        Тест, который проверяет чтение XML 
+        с альтернативными атрибутами
+        """
         from scan_module.read_layout import _read_xml_layout
         xml_content = '''<?xml version="1.0"?>
         <layout>
@@ -40,6 +55,10 @@ class TestReadXmlLayout(unittest.TestCase):
         self.assertEqual(result, {"a": 1.0, "b": 2.0})
     
     def test_empty_xml(self):
+        """
+        Тест, который проверяет чтение 
+        пустого XML-файла
+        """
         from scan_module.read_layout import _read_xml_layout
         xml_content = '''<?xml version="1.0"?>
         <layout>

@@ -10,11 +10,13 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_plot import create_layouts_comparison_chart
 
 class TestCreateLayoutsComparisonChart:
-    """Тесты для функции create_layouts_comparison_chart"""
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_layouts_comparison_chart_success(self, mock_connect):
-        """Тест успешного создания сравнительного графика"""
+        """
+        Тест, который проверяет успешное создание 
+        сравнительного графика раскладок
+        """
         mock_conn = Mock()
         mock_cursor = Mock()
         mock_connect.return_value = mock_conn
@@ -42,7 +44,10 @@ class TestCreateLayoutsComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_layouts_comparison_chart_insufficient_data(self, mock_connect):
-        """Тест с недостаточным количеством раскладок"""
+        """
+        Тест, который проверяет обработку 
+        недостаточного количества раскладок
+        """
         mock_conn = Mock()
         mock_cursor = Mock()
         mock_connect.return_value = mock_conn
@@ -59,7 +64,10 @@ class TestCreateLayoutsComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_layouts_comparison_chart_filter_test_layouts(self, mock_connect):
-        """Тест фильтрации тестовых раскладок"""
+        """
+        Тест, который проверяет фильтрацию 
+        тестовых раскладок
+        """
         mock_conn = Mock()
         mock_cursor = Mock()
         mock_connect.return_value = mock_conn
@@ -81,7 +89,10 @@ class TestCreateLayoutsComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_layouts_comparison_chart_only_test_layouts(self, mock_connect):
-        """Тест когда остаются только тестовые раскладки"""
+        """
+        Тест, который проверяет случай когда 
+        остаются только тестовые раскладки
+        """
         mock_conn = Mock()
         mock_cursor = Mock()
         mock_connect.return_value = mock_conn
@@ -102,7 +113,10 @@ class TestCreateLayoutsComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_layouts_comparison_chart_db_error(self, mock_connect):
-        """Тест обработки ошибки базы данных"""
+        """
+        Тест, который проверяет обработку 
+        ошибки базы данных
+        """
         mock_connect.side_effect = sqlite3.Error("DB connection error")
         
         file_path = create_layouts_comparison_chart()

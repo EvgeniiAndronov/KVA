@@ -9,10 +9,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_file import export_unknown_characters_csv
 
 class TestExportUnknownCharactersCSV:
-    """Тесты для функции export_unknown_characters_csv"""
     
     def test_export_unknown_characters_csv_success(self):
-        """Тест успешного экспорта неизвестных символов"""
+        """
+        Тест, который проверяет успешный экспорт 
+        неизвестных символов в CSV файл
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             unknown_chars = {'@', '#', '$', '€', '©'}
             
@@ -38,7 +40,10 @@ class TestExportUnknownCharactersCSV:
                 assert "'#'" in symbols[0]  # '#' должен быть первым
     
     def test_export_unknown_characters_csv_empty(self):
-        """Тест экспорта пустого множества символов"""
+        """
+        Тест, который проверяет экспорт пустого 
+        множества символов
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             file_path = export_unknown_characters_csv(
                 unknown_chars=set(),
@@ -54,7 +59,10 @@ class TestExportUnknownCharactersCSV:
                 assert len(rows) == 1  # только заголовок
     
     def test_export_unknown_characters_csv_special_chars(self):
-        """Тест экспорта специальных символов"""
+        """
+        Тест, который проверяет экспорт специальных 
+        символов
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             unknown_chars = {'\n', '\t', ' ', '®'}
             

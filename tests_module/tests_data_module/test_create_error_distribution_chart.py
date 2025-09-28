@@ -9,10 +9,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_plot import _create_error_distribution_chart
 
 class TestCreateErrorDistributionChart:
-    """Тесты для функции _create_error_distribution_chart"""
     
     def test_create_error_distribution_chart_success(self):
-        """Тест успешного создания гистограммы распределения ошибок"""
+        """
+        Тест, который проверяет успешное создание 
+        гистограммы распределения ошибок
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 1500,
@@ -38,7 +40,10 @@ class TestCreateErrorDistributionChart:
             assert "error_distribution" in file_path
     
     def test_create_error_distribution_chart_small_values(self):
-        """Тест с малыми значениями ошибок"""
+        """
+        Тест, который проверяет создание гистограммы 
+        с малыми значениями ошибок
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 5,
@@ -63,7 +68,10 @@ class TestCreateErrorDistributionChart:
     
     @patch('make_export_plot.plt.subplots')
     def test_create_error_distribution_chart_exception(self, mock_subplots):
-        """Тест обработки исключения при создании гистограммы"""
+        """
+        Тест, который проверяет обработку исключения 
+        при создании гистограммы
+        """
         mock_subplots.side_effect = Exception("Subplots error")
         
         sample_result = {

@@ -8,10 +8,12 @@ from database_module.database import get_analysis_statistics
 
 
 class TestGetAnalysisStatistics:
-    """Тесты для функции get_analysis_statistics"""
     
     def test_get_statistics_with_data(self):
-        """Тест получения статистики при наличии данных"""
+        """
+        Тест, который проверяет получение 
+        статистики при наличии данных
+        """
         test_result = (5, 3.5, 1, 7)  # total_tests, avg_errors, min_errors, max_errors
         
         with patch('database_module.database.sqlite3.connect') as mock_connect:
@@ -53,7 +55,10 @@ class TestGetAnalysisStatistics:
             assert result == expected_result
     
     def test_get_statistics_no_data(self):
-        """Тест получения статистики при отсутствии данных"""
+        """
+        Тест, который проверяет поведение при 
+        отсутствии данных для раскладки
+        """
         with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
@@ -73,7 +78,10 @@ class TestGetAnalysisStatistics:
             assert result == expected_result
     
     def test_get_statistics_empty_result(self):
-        """Тест получения статистики при пустом результате"""
+        """
+        Тест, который проверяет обработку 
+        пустого результата
+        """
         with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
@@ -93,7 +101,10 @@ class TestGetAnalysisStatistics:
             assert result == expected_result
     
     def test_get_statistics_special_layout_name(self):
-        """Тест со специальными символами в имени раскладки"""
+        """
+        Тест, который проверяет работу с именами 
+        раскладок, содержащими пробелы
+        """
         test_result = (2, 4.0, 3, 5)
         
         with patch('database_module.database.sqlite3.connect') as mock_connect:
@@ -120,7 +131,10 @@ class TestGetAnalysisStatistics:
             assert result == expected_result
     
     def test_get_statistics_null_values(self):
-        """Тест обработки NULL значений в статистике"""
+        """
+        Тест, который проверяет обработку 
+        NULL-значений из БД
+        """
         test_result = (3, None, None, None)
     
         with patch('database_module.database.sqlite3.connect') as mock_connect:

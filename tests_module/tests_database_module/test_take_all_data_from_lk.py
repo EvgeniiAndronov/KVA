@@ -8,10 +8,12 @@ from database_module.database import take_all_data_from_lk
 
 
 class TestTakeAllDataFromLk:
-    """Тесты для функции take_all_data_from_lk"""
     
     def test_take_all_data_from_lk(self):
-        """Тест получения всех данных"""
+        """
+        Тест, который проверяет успешное 
+        получение всех данных из таблицы lk
+        """
         test_data = [
             (1, 'layout1', 'a', 1),
             (2, 'layout1', 'b', 2),
@@ -29,7 +31,10 @@ class TestTakeAllDataFromLk:
             assert result == test_data
     
     def test_take_all_data_from_lk_empty(self):
-        """Тест пустой базы данных"""
+        """
+        Тест, который проверяет поведение 
+        функции при пустой таблице
+        """
         with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()

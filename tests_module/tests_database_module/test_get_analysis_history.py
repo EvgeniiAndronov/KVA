@@ -8,10 +8,12 @@ from database_module.database import get_analysis_history
 
 
 class TestGetAnalysisHistory:
-    """Тесты для функции get_analysis_history"""
     
     def test_get_history_all_layouts(self):
-        """Тест получения истории для всех раскладок"""
+        """
+        Тест, который проверяет получение 
+        истории анализа для всех раскладок
+        """
         test_data = [
             (1, 'layout1', 5, 'words|file1.txt|100w|500c'),
             (2, 'layout2', 3, 'text|file2.txt|50w|250c'),
@@ -37,7 +39,10 @@ class TestGetAnalysisHistory:
             assert result == test_data
     
     def test_get_history_specific_layout(self):
-        """Тест получения истории для конкретной раскладки"""
+        """
+        Тест, который проверяет получение 
+        истории для конкретной раскладки
+        """
         test_data = [
             (1, 'layout1', 5, 'words|file1.txt|100w|500c'),
             (3, 'layout1', 7, 'words|file3.txt|150w|750c')
@@ -61,7 +66,10 @@ class TestGetAnalysisHistory:
             assert result == test_data
     
     def test_get_history_custom_limit(self):
-        """Тест получения истории с кастомным лимитом"""
+        """
+        Тест, который проверяет работу с 
+        пользовательским лимитом записей
+        """
         test_data = [
             (1, 'layout1', 5, 'words|file1.txt|100w|500c'),
             (2, 'layout2', 3, 'text|file2.txt|50w|250c')
@@ -85,7 +93,10 @@ class TestGetAnalysisHistory:
             assert result == test_data
     
     def test_get_history_empty(self):
-        """Тест получения пустой истории"""
+        """
+        Тест, который проверяет поведение 
+        при пустой истории
+        """
         with patch('database_module.database.sqlite3.connect') as mock_connect:
             mock_conn = Mock()
             mock_cursor = Mock()
@@ -98,7 +109,10 @@ class TestGetAnalysisHistory:
             assert result == []
     
     def test_get_history_combined_params(self):
-        """Тест с комбинацией параметров"""
+        """
+        Тест, который проверяет работу 
+        с обоими параметрами одновременно
+        """
         test_data = [
             (5, 'specific_layout', 2, 'text|file.txt|10w|50c')
         ]

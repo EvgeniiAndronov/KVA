@@ -10,10 +10,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_file import create_detailed_csv_report
 
 class TestCreateDetailedCSVReport:
-    """Тесты для функции create_detailed_csv_report"""
     
     def test_create_detailed_csv_report_success(self):
-        """Тест успешного создания детального отчета"""
+        """
+        Тест, который проверяет успешное создание 
+        детального CSV отчета
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             results_list = [
                 {
@@ -68,7 +70,10 @@ class TestCreateDetailedCSVReport:
                 assert rows[2][1] == 'layout2'
     
     def test_create_detailed_csv_report_empty_list(self):
-        """Тест с пустым списком результатов"""
+        """
+        Тест, который проверяет создание отчета с 
+        пустым списком результатов
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             file_path = create_detailed_csv_report(
                 results_list=[],
@@ -83,7 +88,10 @@ class TestCreateDetailedCSVReport:
                 assert len(rows) == 1  # только заголовок
     
     def test_create_detailed_csv_report_missing_fields(self):
-        """Тест с неполными данными в результатах"""
+        """
+        Тест, который проверяет обработку неполных 
+        данных в результатах
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             results_list = [
                 {

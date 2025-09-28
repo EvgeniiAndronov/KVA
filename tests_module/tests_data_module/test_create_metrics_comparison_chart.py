@@ -9,10 +9,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', 'data_mod
 from make_export_plot import _create_metrics_comparison_chart
 
 class TestCreateMetricsComparisonChart:
-    """Тесты для функции _create_metrics_comparison_chart"""
     
     def test_create_metrics_comparison_chart_success(self):
-        """Тест успешного создания радарной диаграммы"""
+        """
+        Тест, который проверяет успешное 
+        создание радарной диаграммы
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 100,
@@ -38,7 +40,10 @@ class TestCreateMetricsComparisonChart:
             assert "metrics_radar" in file_path
     
     def test_create_metrics_comparison_chart_high_errors(self):
-        """Тест с высоким уровнем ошибок"""
+        """
+        Тест, который проверяет создание 
+        диаграммы с высоким уровнем ошибок
+        """
         with tempfile.TemporaryDirectory() as temp_dir:
             sample_result = {
                 'total_errors': 1000,
@@ -63,7 +68,10 @@ class TestCreateMetricsComparisonChart:
     
     @patch('make_export_plot.plt.subplot')
     def test_create_metrics_comparison_chart_exception(self, mock_subplot):
-        """Тест обработки исключения при создании радарной диаграммы"""
+        """
+        Тест, который проверяет обработку исключения 
+        при создании радарной диаграммы
+        """
         mock_subplot.side_effect = Exception("Plot error")
         
         sample_result = {

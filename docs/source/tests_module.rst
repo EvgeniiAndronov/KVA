@@ -17,7 +17,6 @@ test_data
    :undoc-members:
    :show-inheritance:
 
-
 test_imports
 ~~~~~~~~~~~~
 
@@ -26,3 +25,23 @@ test_imports
    :undoc-members:
    :show-inheritance:
 
+test_database
+~~~~~~~~~~~~~
+.. automodule:: tests_module.test_database
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+test_processing
+~~~~~~~~~~~~~~~
+.. automodule:: tests_module.test_processing
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tesr_scan
+~~~~~~~~~
+.. automodule:: tests_module.test_scan
+   :members:
+   :undoc-members:
+   :show-inheritance:

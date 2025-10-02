@@ -10,6 +10,13 @@
 
 Подмодули
 ---------
+test_data
+~~~~~~~~~
+.. automodule:: tests_module.test_data
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 test_imports
 ~~~~~~~~~~~~
@@ -18,3 +25,4 @@ test_imports
    :members:
    :undoc-members:
    :show-inheritance:
+

@@ -45,4 +45,3 @@ tesr_scan
    :members:
    :undoc-members:
    :show-inheritance:
-отвечает за тралала

@@ -29,7 +29,7 @@ export_unknown_characters_csv()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_export_unknown_characters_csv.TestExportUnknownCharactersCSV
+.. autoclass:: tests_module.tests_data_module.test_export_unknown_characters_csv.TestExportUnknownCharactersCSV
    :members:
    :undoc-members:
    :show-inheritance:
@@ -42,7 +42,7 @@ _get_quality_assessment()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_get_quality_assessment.TestGetQualityAssessment
+.. autoclass:: tests_module.tests_data_module.test_get_quality_assessment.TestGetQualityAssessment
    :members:
    :undoc-members:
    :show-inheritance:
@@ -55,7 +55,7 @@ create_csv_report()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_csv_report.TestCreateCSVReport
+.. autoclass:: tests_module.tests_data_module.test_create_csv_report.TestCreateCSVReport
    :members:
    :undoc-members:
    :show-inheritance:
@@ -68,7 +68,7 @@ create_detailed_csv_report()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_detailed_csv_report.TestCreateDetailedCSVReport
+.. autoclass:: tests_module.tests_data_module.test_create_detailed_csv_report.TestCreateDetailedCSVReport
    :members:
    :undoc-members:
    :show-inheritance:
@@ -84,7 +84,7 @@ create_analysis_charts()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_analysis_charts.TestCreateAnalysisCharts
+.. autoclass:: tests_module.tests_data_module.test_create_analysis_charts.TestCreateAnalysisCharts
    :members:
    :undoc-members:
    :show-inheritance:
@@ -97,7 +97,7 @@ _create_coverage_pie_chart()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_coverage_pie_chart.TestCreateCoveragePieChart
+.. autoclass:: tests_module.tests_data_module.test_create_coverage_pie_chart.TestCreateCoveragePieChart
    :members:
    :undoc-members:
    :show-inheritance:
@@ -110,7 +110,7 @@ _create_error_distribution_chart()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_error_distribution_chart.TestCreateErrorDistributionChart
+.. autoclass:: tests_module.tests_data_module.test_create_error_distribution_chart.TestCreateErrorDistributionChart
    :members:
    :undoc-members:
    :show-inheritance:
@@ -123,7 +123,7 @@ create_history_comparison_chart()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_history_comparison_chart.TestCreateHistoryComparisonChart
+.. autoclass:: tests_module.tests_data_module.test_create_history_comparison_chart.TestCreateHistoryComparisonChart
    :members:
    :undoc-members:
    :show-inheritance:
@@ -136,7 +136,7 @@ create_layouts_comparison_chart()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_layouts_comparison_chart.TestCreateLayoutsComparisonChart
+.. autoclass:: tests_module.tests_data_module.test_create_layouts_comparison_chart.TestCreateLayoutsComparisonChart
    :members:
    :undoc-members:
    :show-inheritance:
@@ -149,7 +149,7 @@ _create_metrics_comparison_chart()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_data_module.test_create_metrics_comparison_chart.TestCreateMetricsComparisonChart
+.. autoclass:: tests_module.tests_data_module.test_create_metrics_comparison_chart.TestCreateMetricsComparisonChart
    :members:
    :undoc-members:
    :show-inheritance:
@@ -170,7 +170,7 @@ get_analysis_history()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_get_analysis_history.TestGetAnalysisHistory
+.. autoclass:: tests_module.tests_database_module.test_get_analysis_history.TestGetAnalysisHistory
    :members:
    :undoc-members:
    :show-inheritance:
@@ -183,7 +183,7 @@ take_lk_names_from_lk()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_take_lk_names_from_lk.TestTakeLkNamesFromLk
+.. autoclass:: tests_module.tests_database_module.test_take_lk_names_from_lk.TestTakeLkNamesFromLk
    :members:
    :undoc-members:
    :show-inheritance:
@@ -196,7 +196,7 @@ take_lk_from_db()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_take_lk_from_db.TestTakeLkFromDb
+.. autoclass:: tests_module.tests_database_module.test_take_lk_from_db.TestTakeLkFromDb
    :members:
    :undoc-members:
    :show-inheritance:
@@ -209,7 +209,7 @@ save_analysis_result()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_save_analysis_result.TestSaveAnalysisResult
+.. autoclass:: tests_module.tests_database_module.test_save_analysis_result.TestSaveAnalysisResult
    :members:
    :undoc-members:
    :show-inheritance:
@@ -222,7 +222,7 @@ take_all_data_from_lk()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_take_all_data_from_lk.TestTakeAllDataFromLk
+.. autoclass:: tests_module.tests_database_module.test_take_all_data_from_lk.TestTakeAllDataFromLk
    :members:
    :undoc-members:
    :show-inheritance:
@@ -235,7 +235,7 @@ get_analysis_statistics()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_get_analysis_statistics.TestGetAnalysisStatistics
+.. autoclass:: tests_module.tests_database_module.test_get_analysis_statistics.TestGetAnalysisStatistics
    :members:
    :undoc-members:
    :show-inheritance:
@@ -248,7 +248,7 @@ delete_analysis_result()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_delete_analysis_result.TestDeleteAnalysisResult
+.. autoclass:: tests_module.tests_database_module.test_delete_analysis_result.TestDeleteAnalysisResult
    :members:
    :undoc-members:
    :show-inheritance:
@@ -264,7 +264,7 @@ init_tables()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_init_tables.TestInitTables
+.. autoclass:: tests_module.tests_database_module.test_init_tables.TestInitTables
    :members:
    :undoc-members:
    :show-inheritance:
@@ -277,7 +277,7 @@ make_mok_data()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_database.test_make_mok_data.TestMakeMokData
+.. autoclass:: tests_module.tests_database_module.test_make_mok_data.TestMakeMokData
    :members:
    :undoc-members:
    :show-inheritance:
@@ -298,7 +298,7 @@ make_processing()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_processing.test_make_processing.TestMakeProcessing
+.. autoclass:: tests_module.tests_processing_module.test_make_processing.TestMakeProcessing
    :members:
    :undoc-members:
    :show-inheritance:
@@ -311,7 +311,7 @@ make_processing_stream()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_processing.test_make_processing_stream.TestMakeProcessingStream
+.. autoclass:: tests_module.tests_processing_module.test_make_processing_stream.TestMakeProcessingStream
    :members:
    :undoc-members:
    :show-inheritance:
@@ -324,7 +324,7 @@ make_text_processing()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_processing.test_make_text_processing.TestMakeTextProcessing
+.. autoclass:: tests_module.tests_processing_module.test_make_text_processing.TestMakeTextProcessing
    :members:
    :undoc-members:
    :show-inheritance:
@@ -337,7 +337,7 @@ make_text_processing_stream()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_processing.test_make_text_processing_stream.TestMakeTextProcessingStream
+.. autoclass:: tests_module.tests_processing_module.test_make_text_processing_stream.TestMakeTextProcessingStream
    :members:
    :undoc-members:
    :show-inheritance:
@@ -350,7 +350,7 @@ validate_rules()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_processing.test_validate_rules.TestValidateRules
+.. autoclass:: tests_module.tests_processing_module.test_validate_rules.TestValidateRules
    :members:
    :undoc-members:
    :show-inheritance:
@@ -371,7 +371,7 @@ read_kl()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_read_kl.TestReadKl
+.. autoclass:: tests_module.tests_scan_module.test_read_kl.TestReadKl
    :members:
    :undoc-members:
    :show-inheritance:
@@ -384,7 +384,7 @@ _is_numeric()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test__is_numeric.TestIsNumeric
+.. autoclass:: tests_module.tests_scan_module.test_is_numeric.TestIsNumeric
    :members:
    :undoc-members:
    :show-inheritance:
@@ -397,7 +397,7 @@ _extract_layout_from_dict()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_extract_layout_from_dict.TestExtractLayoutFromDict
+.. autoclass:: tests_module.tests_scan_module.test_extract_layout_from_dict.TestExtractLayoutFromDict
    :members:
    :undoc-members:
    :show-inheritance:
@@ -410,7 +410,7 @@ _read_json_layout()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_read_json_layout.TestReadJsonLayout
+.. autoclass:: tests_module.tests_scan_module.test_read_json_layout.TestReadJsonLayout
    :members:
    :undoc-members:
    :show-inheritance:
@@ -423,7 +423,7 @@ _read_xml_layout()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_read_xml_layout.TestReadXmlLayout
+.. autoclass:: tests_module.tests_scan_module.test_read_xml_layout.TestReadXmlLayout
    :members:
    :undoc-members:
    :show-inheritance:
@@ -436,7 +436,7 @@ _auto_detect_and_read()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_auto_detect_and_read.TestAutoDetectAndRead
+.. autoclass:: tests_module.tests_scan_module.test_auto_detect_and_read.TestAutoDetectAndRead
    :members:
    :undoc-members:
    :show-inheritance:
@@ -449,7 +449,7 @@ _read_text_layout()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_read_text_layout.TestReadTextLayout
+.. autoclass:: tests_module.tests_scan_module.test_read_text_layout.TestReadTextLayout
    :members:
    :undoc-members:
    :show-inheritance:
@@ -462,7 +462,7 @@ save_layout_to_file()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_save_layout_to_file.TestSaveLayoutToFile
+.. autoclass:: tests_module.tests_scan_module.test_save_layout_to_file.TestSaveLayoutToFile
    :members:
    :undoc-members:
    :show-inheritance:
@@ -475,7 +475,7 @@ validate_layout()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_validate_layout.TestValidateLayout
+.. autoclass:: tests_module.tests_scan_module.test_validate_layout.TestValidateLayout
    :members:
    :undoc-members:
    :show-inheritance:
@@ -488,7 +488,7 @@ _read_csv_layout()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_read_csv_layout.TestReadCsvLayout
+.. autoclass:: tests_module.tests_scan_module.test_read_csv_layout.TestReadCsvLayout
    :members:
    :undoc-members:
    :show-inheritance:
@@ -504,7 +504,7 @@ get_words_from_file()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_get_words_from_file.TestGetWordsFromFile
+.. autoclass:: tests_module.tests_scan_module.test_get_words_from_file.TestGetWordsFromFile
    :members:
    :undoc-members:
    :show-inheritance:
@@ -517,7 +517,7 @@ get_words_from_file_stream()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_get_words_from_file_stream.TestGetWordsFromFileStream
+.. autoclass:: tests_module.tests_scan_module.test_get_words_from_file_stream.TestGetWordsFromFileStream
    :members:
    :undoc-members:
    :show-inheritance:
@@ -530,7 +530,7 @@ get_file_size_mb()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_get_file_size_mb.TestGetFileSizeMb
+.. autoclass:: tests_module.tests_scan_module.test_get_file_size_mb.TestGetFileSizeMb
    :members:
    :undoc-members:
    :show-inheritance:
@@ -543,7 +543,7 @@ count_lines_in_file()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_count_lines_in_file.TestCountLinesInFile
+.. autoclass:: tests_module.tests_scan_module.test_count_lines_in_file.TestCountLinesInFile
    :members:
    :undoc-members:
    :show-inheritance:
@@ -556,7 +556,7 @@ count_characters_in_file()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_count_characters_in_file.TestCountCharactersInFile
+.. autoclass:: tests_module.tests_scan_module.test_count_characters_in_file.TestCountCharactersInFile
    :members:
    :undoc-members:
    :show-inheritance:
@@ -569,7 +569,7 @@ get_text_from_file()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_get_text_from_file.TestGetTextFromFile
+.. autoclass:: tests_module.tests_scan_module.test_get_text_from_file.TestGetTextFromFile
    :members:
    :undoc-members:
    :show-inheritance:
@@ -582,7 +582,7 @@ get_text_from_file_stream()
 Тесты:
 ^^^^^^
 
-.. autoclass:: tests_module.test_scan.test_get_text_from_file_stream.TestGetTextFromFileStream
+.. autoclass:: tests_module.tests_scan_module.test_get_text_from_file_stream.TestGetTextFromFileStream
    :members:
    :undoc-members:
    :show-inheritance:

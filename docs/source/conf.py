@@ -13,6 +13,9 @@ import sys
 sys.path.insert(0, os.path.abspath('../..'))  # путь к корню проекта
 sys.path.insert(0, os.path.abspath('../../tests_module'))  # путь к тестам
 
+# Добавьте путь к tests_module (дополнительный путь)
+sys.path.insert(0, os.path.abspath('./tests_module'))
+
 project = 'kla'
 copyright = '2025, diana'
 author = 'diana'
@@ -75,6 +78,9 @@ language = 'ru'
 # Кодировка
 source_encoding = 'utf-8'
 
+# Главный документ (точка входа)
+master_doc = 'index'
+
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
@@ -83,7 +89,7 @@ html_theme = 'sphinx_rtd_theme'
 # Пути к статическим файлам
 html_static_path = ['_static']
 
-# Настройки темы
+# Настройки темы для singlehtml
 html_theme_options = {
     'navigation_depth': 4,
     'collapse_navigation': False,
@@ -111,6 +117,14 @@ html_css_files = [
 
 # Дополнительные JS файлы
 html_js_files = []
+
+# -- Options for single HTML output ------------------------------------------
+
+# Настройки для единого HTML файла
+html_split_index = False
+html_sidebars = {
+    '**': ['globaltoc.html', 'searchbox.html']
+}
 
 # -- Options for internationalization ----------------------------------------
 locale_dirs = ['locale/']  # путь к файлам перевода

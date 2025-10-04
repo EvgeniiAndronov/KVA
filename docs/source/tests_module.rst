@@ -1,7 +1,7 @@
 Модуль тестов (tests_module)
 ============================
 
-Модуль для тестирования функциональности проекта. Саша делает первые 2 модуля
+Модуль для тестирования функциональности проекта.
 
 .. automodule:: tests_module
    :members:
@@ -12,13 +12,19 @@
 ---------
 test_data
 ~~~~~~~~~
+
+Тестирует корректность работы с тестовыми данными (форматы, загрузка, валидация).
+
 .. automodule:: tests_module.test_data
    :members:
    :undoc-members:
    :show-inheritance:
 
+
 test_imports
 ~~~~~~~~~~~~
+
+Проверяет успешность импорта всех необходимых модулей и зависимостей.
 
 .. automodule:: tests_module.test_imports
    :members:
@@ -27,6 +33,9 @@ test_imports
 
 test_database
 ~~~~~~~~~~~~~
+
+Тестирует взаимодействие с базой данных (подключение, запросы, транзакции).
+
 .. automodule:: tests_module.test_database
    :members:
    :undoc-members:
@@ -34,6 +43,9 @@ test_database
 
 test_processing
 ~~~~~~~~~~~~~~~
+
+Проверяет логику обработки данных (алгоритмы, преобразования, результаты).
+
 .. automodule:: tests_module.test_processing
    :members:
    :undoc-members:
@@ -41,6 +53,9 @@ test_processing
 
 test_scan
 ~~~~~~~~~
+
+Тестирует функционал сканирования (например, файлов, директорий или внешних источников).
+
 .. automodule:: tests_module.test_scan
    :members:
    :undoc-members:

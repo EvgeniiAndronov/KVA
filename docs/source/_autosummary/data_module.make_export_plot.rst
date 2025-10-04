@@ -16,5 +16,6 @@ data\_module.make\_export\_plot
 
    .. autosummary::
    
+      Any
       datetime
    

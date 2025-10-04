@@ -1,7 +1,7 @@
-tests\_module.test\_imports
-===========================
+main
+====
 
-.. automodule:: tests_module.test_imports
+.. automodule:: main
 
    
    .. rubric:: Functions
@@ -23,6 +23,7 @@ tests\_module.test\_imports
       get_words_from_file
       get_words_from_file_stream
       init_tables
+      main
       make_mok_data
       make_processing
       make_processing_stream
@@ -30,10 +31,17 @@ tests\_module.test\_imports
       make_text_processing_stream
       read_kl
       save_analysis_result
-      save_layout_to_file
       take_all_data_from_lk
       take_lk_from_db
       take_lk_names_from_lk
-      validate_layout
       validate_rules
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      Enum
+      MenuAction
+      MenuSystem
+      datetime
    

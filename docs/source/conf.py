@@ -12,9 +12,33 @@ import sys
 # Добавляем пути к проекту для корректного импорта модулей
 sys.path.insert(0, os.path.abspath('../..'))  # путь к корню проекта
 sys.path.insert(0, os.path.abspath('../../tests_module'))  # путь к тестам
+sys.path.insert(0, os.path.abspath('./tests_module'))  # дополнительный путь к тестам
 
-# Добавьте путь к tests_module (дополнительный путь)
-sys.path.insert(0, os.path.abspath('./tests_module'))
+# Явно добавляем пути ко всем модулям проекта
+project_root = os.path.abspath('../..')
+project_modules = [
+    'data_module',
+    'database_module', 
+    'processing_module',
+    'scan_module',
+    'output_data',
+    'tests_module'
+]
+
+for module in project_modules:
+    module_path = os.path.join(project_root, module)
+    if os.path.exists(module_path):
+        sys.path.insert(0, module_path)
+        print(f"Added path: {module_path}")  # Для отладки
+
+# Также добавляем пути ко всем поддиректориям tests_module
+tests_module_path = os.path.join(project_root, 'tests_module')
+if os.path.exists(tests_module_path):
+    for item in os.listdir(tests_module_path):
+        item_path = os.path.join(tests_module_path, item)
+        if os.path.isdir(item_path):
+            sys.path.insert(0, item_path)
+            print(f"Added tests subpath: {item_path}")  # Для отладки
 
 project = 'kla'
 copyright = '2025, diana'
@@ -173,23 +197,6 @@ viewcode_line_numbers = True
 suppress_warnings = [
     'autodoc.import_object'
 ]
-
-# -- Кастомные настройки для вашего проекта ----------------------------------
-
-# Добавляем пути ко всем модулям проекта
-project_modules = [
-    'data_module',
-    'database_module', 
-    'processing_module',
-    'scan_module',
-    'output_data',
-    'tests_module'
-]
-
-for module in project_modules:
-    module_path = os.path.abspath(os.path.join('../..', module))
-    if os.path.exists(module_path):
-        sys.path.insert(0, module_path)
 
 # -- Final setup -------------------------------------------------------------
 

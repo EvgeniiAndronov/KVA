@@ -13,6 +13,8 @@
    tests_scan
    test_imports
 
+.. _tests_data_module_section:
+
 tests_data_module
 =================
 
@@ -20,6 +22,8 @@ tests_data_module
 
 Тестируемые функции модуля make_export_file
 -------------------------------------------
+
+.. _test_export_unknown_characters_csv:
 
 export_unknown_characters_csv()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,6 +38,8 @@ export_unknown_characters_csv()
    :undoc-members:
    :show-inheritance:
 
+.. _test_get_quality_assessment:
+
 _get_quality_assessment()
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -47,6 +53,8 @@ _get_quality_assessment()
    :undoc-members:
    :show-inheritance:
 
+.. _test_create_csv_report:
+
 create_csv_report()
 ~~~~~~~~~~~~~~~~~~~
 
@@ -59,6 +67,8 @@ create_csv_report()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_create_detailed_csv_report:
 
 create_detailed_csv_report()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -76,6 +86,8 @@ create_detailed_csv_report()
 Тестируемые функции модуля make_export_plot
 -------------------------------------------
 
+.. _test_create_analysis_charts:
+
 create_analysis_charts()
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -88,6 +100,8 @@ create_analysis_charts()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_create_coverage_pie_chart:
 
 _create_coverage_pie_chart()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,6 +116,8 @@ _create_coverage_pie_chart()
    :undoc-members:
    :show-inheritance:
 
+.. _test_create_error_distribution_chart:
+
 _create_error_distribution_chart()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -114,6 +130,8 @@ _create_error_distribution_chart()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_create_history_comparison_chart:
 
 create_history_comparison_chart()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -128,6 +146,8 @@ create_history_comparison_chart()
    :undoc-members:
    :show-inheritance:
 
+.. _test_create_layouts_comparison_chart:
+
 create_layouts_comparison_chart()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -140,6 +160,8 @@ create_layouts_comparison_chart()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_create_metrics_comparison_chart:
 
 _create_metrics_comparison_chart()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -154,6 +176,8 @@ _create_metrics_comparison_chart()
    :undoc-members:
    :show-inheritance:
 
+.. _tests_database_section:
+
 tests_database
 ==============
 
@@ -161,6 +185,8 @@ tests_database
 
 Тестируемые функции модуля database
 -----------------------------------
+
+.. _test_get_analysis_history:
 
 get_analysis_history()
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -175,6 +201,8 @@ get_analysis_history()
    :undoc-members:
    :show-inheritance:
 
+.. _test_take_lk_names_from_lk:
+
 take_lk_names_from_lk()
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -187,6 +215,8 @@ take_lk_names_from_lk()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_take_lk_from_db:
 
 take_lk_from_db()
 ~~~~~~~~~~~~~~~~~
@@ -201,6 +231,8 @@ take_lk_from_db()
    :undoc-members:
    :show-inheritance:
 
+.. _test_save_analysis_result:
+
 save_analysis_result()
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -213,6 +245,8 @@ save_analysis_result()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_take_all_data_from_lk:
 
 take_all_data_from_lk()
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -227,6 +261,8 @@ take_all_data_from_lk()
    :undoc-members:
    :show-inheritance:
 
+.. _test_get_analysis_statistics:
+
 get_analysis_statistics()
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -239,6 +275,8 @@ get_analysis_statistics()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_delete_analysis_result:
 
 delete_analysis_result()
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -256,6 +294,8 @@ delete_analysis_result()
 Тестируемые функции модуля db_init
 ----------------------------------
 
+.. _test_init_tables:
+
 init_tables()
 ~~~~~~~~~~~~~
 
@@ -268,6 +308,8 @@ init_tables()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_make_mok_data:
 
 make_mok_data()
 ~~~~~~~~~~~~~~~
@@ -282,6 +324,8 @@ make_mok_data()
    :undoc-members:
    :show-inheritance:
 
+.. _tests_processing_section:
+
 tests_processing
 ================
 
@@ -289,6 +333,8 @@ tests_processing
 
 Тестируемые функции модуля calculate_data
 -----------------------------------------
+
+.. _test_make_processing:
 
 make_processing()
 ~~~~~~~~~~~~~~~~~
@@ -303,6 +349,8 @@ make_processing()
    :undoc-members:
    :show-inheritance:
 
+.. _test_make_processing_stream:
+
 make_processing_stream()
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -315,6 +363,8 @@ make_processing_stream()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_make_text_processing:
 
 make_text_processing()
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -329,6 +379,8 @@ make_text_processing()
    :undoc-members:
    :show-inheritance:
 
+.. _test_make_text_processing_stream:
+
 make_text_processing_stream()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -341,6 +393,8 @@ make_text_processing_stream()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_validate_rules:
 
 validate_rules()
 ~~~~~~~~~~~~~~~~
@@ -355,6 +409,8 @@ validate_rules()
    :undoc-members:
    :show-inheritance:
 
+.. _tests_scan_section:
+
 tests_scan
 ==========
 
@@ -362,6 +418,8 @@ tests_scan
 
 Тестируемые функции модуля read_layout
 --------------------------------------
+
+.. _test_read_kl:
 
 read_kl()
 ~~~~~~~~~
@@ -376,6 +434,8 @@ read_kl()
    :undoc-members:
    :show-inheritance:
 
+.. _test_is_numeric:
+
 _is_numeric()
 ~~~~~~~~~~~~~
 
@@ -388,6 +448,8 @@ _is_numeric()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_extract_layout_from_dict:
 
 _extract_layout_from_dict()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -402,6 +464,8 @@ _extract_layout_from_dict()
    :undoc-members:
    :show-inheritance:
 
+.. _test_read_json_layout:
+
 _read_json_layout()
 ~~~~~~~~~~~~~~~~~~~
 
@@ -414,6 +478,8 @@ _read_json_layout()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_read_xml_layout:
 
 _read_xml_layout()
 ~~~~~~~~~~~~~~~~~~
@@ -428,6 +494,8 @@ _read_xml_layout()
    :undoc-members:
    :show-inheritance:
 
+.. _test_auto_detect_and_read:
+
 _auto_detect_and_read()
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -440,6 +508,8 @@ _auto_detect_and_read()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_read_text_layout:
 
 _read_text_layout()
 ~~~~~~~~~~~~~~~~~~~
@@ -454,6 +524,8 @@ _read_text_layout()
    :undoc-members:
    :show-inheritance:
 
+.. _test_save_layout_to_file:
+
 save_layout_to_file()
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -467,6 +539,8 @@ save_layout_to_file()
    :undoc-members:
    :show-inheritance:
 
+.. _test_validate_layout:
+
 validate_layout()
 ~~~~~~~~~~~~~~~~~
 
@@ -479,6 +553,8 @@ validate_layout()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_read_csv_layout:
 
 _read_csv_layout()
 ~~~~~~~~~~~~~~~~~~
@@ -496,6 +572,8 @@ _read_csv_layout()
 Тестируемые функции модуля read_files
 -------------------------------------
 
+.. _test_get_words_from_file:
+
 get_words_from_file()
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -508,6 +586,8 @@ get_words_from_file()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_get_words_from_file_stream:
 
 get_words_from_file_stream()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -522,6 +602,8 @@ get_words_from_file_stream()
    :undoc-members:
    :show-inheritance:
 
+.. _test_get_file_size_mb:
+
 get_file_size_mb()
 ~~~~~~~~~~~~~~~~~~
 
@@ -534,6 +616,8 @@ get_file_size_mb()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_count_lines_in_file:
 
 count_lines_in_file()
 ~~~~~~~~~~~~~~~~~~~~~
@@ -548,6 +632,8 @@ count_lines_in_file()
    :undoc-members:
    :show-inheritance:
 
+.. _test_count_characters_in_file:
+
 count_characters_in_file()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -560,6 +646,8 @@ count_characters_in_file()
    :members:
    :undoc-members:
    :show-inheritance:
+
+.. _test_get_text_from_file:
 
 get_text_from_file()
 ~~~~~~~~~~~~~~~~~~~~
@@ -574,6 +662,8 @@ get_text_from_file()
    :undoc-members:
    :show-inheritance:
 
+.. _test_get_text_from_file_stream:
+
 get_text_from_file_stream()
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -587,18 +677,44 @@ get_text_from_file_stream()
    :undoc-members:
    :show-inheritance:
 
+.. _test_imports_section:
+
 test_imports
 ============
 
 Тесты для проверки корректности импортов всех модулей проекта.
 
+.. _test_imports:
+
 test_imports.py
 ---------------
 
-.. automodule:: tests_module.test_imports
-   :members:
-   :undoc-members:
-   :show-inheritance:
+**Описание**: Скрипт для проверки корректности импортов всех основных модулей проекта.
+
+**Назначение**: Проверяет, что все модули могут быть успешно импортированы без ошибок.
+
+**Проверяемые импорты**:
+
+- ``database_module.db_init`` - функции инициализации БД
+- ``database_module.database`` - функции работы с базой данных  
+- ``scan_module.read_files`` - функции чтения файлов
+- ``processing_module.calculate_data`` - функции обработки данных
+- ``data_module.make_export_file`` - функции экспорта в файлы
+- ``data_module.make_export_plot`` - функции создания графиков
+- ``output_data.console_strings`` - строки для консольного вывода
+- ``scan_module.read_layout`` - функции чтения раскладок
+
+**Исходный код**:
+
+.. literalinclude:: ../../tests_module/test_imports.py
+   :language: python
+   :linenos:
+   :caption: test_imports.py
+   :emphasize-lines: 7-45
+
+**Результат выполнения**:
+При успешном выполнении скрипт выводит сообщение "🎉 Все импорты успешны!".
+При ошибках импорта выводится соответствующее сообщение об ошибке.
 
 Индексирование
 ==============

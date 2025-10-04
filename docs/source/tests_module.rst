@@ -39,7 +39,7 @@ test_processing
    :undoc-members:
    :show-inheritance:
 
-tesr_scan
+test_scan
 ~~~~~~~~~
 .. automodule:: tests_module.test_scan
    :members:

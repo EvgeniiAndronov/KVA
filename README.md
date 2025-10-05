@@ -6,7 +6,7 @@
 
 ### 1. Установка зависимостей
 ```bash
-pip install -r requirements.txt
+uv sync
 ```
 
 ### 2. Проверка проекта
@@ -16,40 +16,30 @@ python check_project.py
 
 ### 3. Запуск программы
 ```bash
-python main.py
+uv run main.py
 ```
 
 ## Подробная установка
 
 ### Требования
-- Python 3.8 или выше
-- pip (менеджер пакетов Python)
-
-### Установка зависимостей
-```bash
-# Основные зависимости
-pip install matplotlib>=3.5.0
-pip install tqdm>=4.64.0
-pip install numpy>=1.21.0
-
-# Или все сразу из файла
-pip install -r requirements.txt
-```
+- Python 3.13 или выше
+- uv (менеджер пакетов Python)
+  
 
 ### Проверка установки
 ```bash
 # Проверка импортов
-python test_imports.py
+uv run test_imports.py
 
 # Полная проверка проекта
-python check_project.py
+uv run check_project.py
 ```
 
 ## Первый запуск
 
 1. **Запустите программу:**
    ```bash
-   python main.py
+   uv run main.py
    ```
 
 2. **Выберите раскладку:**
@@ -68,7 +58,6 @@ python check_project.py
 
 ### Тестовые файлы:
 - `test_words.txt` - небольшой файл для тестирования
-- `rockyou.txt` - большой файл паролей (134MB)
 
 ### Примеры раскладок:
 - `example_layouts/qwerty_layout.json` - QWERTY в JSON
@@ -92,17 +81,6 @@ KVA/
 
 ## Возможные проблемы
 
-### Ошибка импорта matplotlib
-```bash
-# Ubuntu/Debian
-sudo apt-get install python3-matplotlib
-
-# macOS
-brew install python-tk
-
-# Windows
-pip install matplotlib
-```
 
 ### Ошибка "No module named 'tkinter'"
 ```bash
@@ -119,9 +97,8 @@ sudo yum install tkinter
 
 ## Получение помощи
 
-1. **Проверьте документацию:** `FEATURES_README.md`
-2. **Запустите диагностику:** `python check_project.py`
-3. **Проверьте импорты:** `python test_imports.py`
+1. **Запустите диагностику:** `python check_project.py`
+2. **Проверьте импорты:** `python test_imports.py`
 
 ---
 

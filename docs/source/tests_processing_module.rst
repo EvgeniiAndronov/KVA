@@ -6,12 +6,6 @@
 Тесты:
 ------
 
-
-.. automodule:: tests_module.test_processing_module.test_make_processing.TestMakeProcessing
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 test_make_processing.py
 ~~~~~~~~~~~~~~~~~~~~~~~
 

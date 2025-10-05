@@ -8,7 +8,7 @@
 
 project = 'kla'
 copyright = '2025, diana'
-author = 'diana'
+author = 'diana, sasha'
 release = '1.0'
 
 # -- General configuration ---------------------------------------------------

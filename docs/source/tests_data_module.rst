@@ -8,8 +8,8 @@ tests_data_module
    :undoc-members:
    :show-inheritance:
 
-Подмодули
----------
+Тесты
+-----
 
 test_create_coverage_pie_chart.py
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

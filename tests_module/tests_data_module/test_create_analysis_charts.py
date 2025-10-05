@@ -13,7 +13,7 @@ class TestCreateAnalysisCharts:
     @patch('make_export_plot._create_coverage_pie_chart')
     @patch('make_export_plot._create_error_distribution_chart')
     @patch('make_export_plot._create_metrics_comparison_chart')
-    def test_create_analysis_charts_success(self, mock_metrics, mock_error, mock_coverage):
+    def test_create_analysis_charts_success(self, mock_metrics, mock_error, mock_coverage, temp_dir, sample_result_basic):
         """
         Тест, который проверяет успешное создание 
         всех графиков анализа
@@ -22,35 +22,23 @@ class TestCreateAnalysisCharts:
         mock_error.return_value = "/path/error.png"
         mock_metrics.return_value = "/path/metrics.png"
         
-        sample_result = {
-            'total_errors': 1500,
-            'total_words': 1000,
-            'total_characters': 5000,
-            'processed_characters': 4800,
-            'unknown_characters': {'@', '#', '$'},
-            'avg_errors_per_word': 1.5,
-            'avg_errors_per_char': 0.0003,
-            'text_type': 'words'
-        }
+        charts = create_analysis_charts(
+            result=sample_result_basic,
+            layout_name="test_layout",
+            file_path="/test/path.txt",
+            output_dir=temp_dir
+        )
         
-        with tempfile.TemporaryDirectory() as temp_dir:
-            charts = create_analysis_charts(
-                result=sample_result,
-                layout_name="test_layout",
-                file_path="/test/path.txt",
-                output_dir=temp_dir
-            )
-            
-            assert len(charts) == 3
-            assert "/path/coverage.png" in charts
-            assert mock_coverage.called
-            assert mock_error.called
-            assert mock_metrics.called
+        assert len(charts) == 3
+        assert "/path/coverage.png" in charts
+        assert mock_coverage.called
+        assert mock_error.called
+        assert mock_metrics.called
     
     @patch('make_export_plot._create_coverage_pie_chart')
     @patch('make_export_plot._create_error_distribution_chart')
     @patch('make_export_plot._create_metrics_comparison_chart')
-    def test_create_analysis_charts_partial_success(self, mock_metrics, mock_error, mock_coverage):
+    def test_create_analysis_charts_partial_success(self, mock_metrics, mock_error, mock_coverage, sample_result_basic):
         """
         Тест, который проверяет создание графиков 
         при частичном успехе
@@ -59,19 +47,8 @@ class TestCreateAnalysisCharts:
         mock_error.return_value = None  # ошибка при создании
         mock_metrics.return_value = "/path/metrics.png"
         
-        sample_result = {
-            'total_errors': 100,
-            'total_words': 50,
-            'total_characters': 200,
-            'processed_characters': 180,
-            'unknown_characters': set(),
-            'avg_errors_per_word': 2.0,
-            'avg_errors_per_char': 0.01,
-            'text_type': 'words'
-        }
-        
         charts = create_analysis_charts(
-            result=sample_result,
+            result=sample_result_basic,
             layout_name="test_layout",
             file_path="/test/path.txt"
         )
@@ -82,7 +59,7 @@ class TestCreateAnalysisCharts:
     @patch('make_export_plot._create_coverage_pie_chart')
     @patch('make_export_plot._create_error_distribution_chart')
     @patch('make_export_plot._create_metrics_comparison_chart')
-    def test_create_analysis_charts_minimal_data(self, mock_metrics, mock_error, mock_coverage):
+    def test_create_analysis_charts_minimal_data(self, mock_metrics, mock_error, mock_coverage, sample_result_minimal):
         """
         Тест, который проверяет создание графиков 
         с минимальными корректными данными
@@ -91,20 +68,8 @@ class TestCreateAnalysisCharts:
         mock_error.return_value = "/path/error.png"
         mock_metrics.return_value = "/path/metrics.png"
         
-        # Используем минимальные корректные значения вместо нулей
-        sample_result = {
-            'total_errors': 1,
-            'total_words': 1,
-            'total_characters': 10,
-            'processed_characters': 8,
-            'unknown_characters': set(),
-            'avg_errors_per_word': 1.0,
-            'avg_errors_per_char': 0.1,
-            'text_type': 'words'
-        }
-        
         charts = create_analysis_charts(
-            result=sample_result,
+            result=sample_result_minimal,
             layout_name="minimal_layout",
             file_path="/test/path.txt"
         )

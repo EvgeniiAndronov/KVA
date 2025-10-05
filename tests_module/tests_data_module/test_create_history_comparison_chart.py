@@ -12,7 +12,7 @@ from make_export_plot import create_history_comparison_chart
 class TestCreateHistoryComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
-    def test_create_history_comparison_chart_success(self, mock_connect):
+    def test_create_history_comparison_chart_success(self, mock_connect, temp_dir, history_data):
         """
         Тест, который проверяет успешное создание 
         графика истории ошибок
@@ -24,21 +24,17 @@ class TestCreateHistoryComparisonChart:
         mock_conn.cursor.return_value = mock_cursor
         
         # Мокаем данные из БД
-        mock_cursor.fetchall.return_value = [
-            (1, 10, 'words'), (2, 8, 'words'), (3, 5, 'words'),
-            (4, 7, 'words'), (5, 3, 'words')
-        ]
+        mock_cursor.fetchall.return_value = history_data
         
-        with tempfile.TemporaryDirectory() as temp_dir:
-            file_path = create_history_comparison_chart(
-                layout_name="test_layout",
-                output_dir=temp_dir
-            )
-            
-            assert file_path is not None
-            assert os.path.exists(file_path)
-            assert file_path.endswith('.png')
-            assert "history_comparison" in file_path
+        file_path = create_history_comparison_chart(
+            layout_name="test_layout",
+            output_dir=temp_dir
+        )
+        
+        assert file_path is not None
+        assert os.path.exists(file_path)
+        assert file_path.endswith('.png')
+        assert "history_comparison" in file_path
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_history_comparison_chart_insufficient_data(self, mock_connect):

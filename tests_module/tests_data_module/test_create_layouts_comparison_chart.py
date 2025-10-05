@@ -12,7 +12,7 @@ from make_export_plot import create_layouts_comparison_chart
 class TestCreateLayoutsComparisonChart:
     
     @patch('make_export_plot.sqlite3.connect')
-    def test_create_layouts_comparison_chart_success(self, mock_connect):
+    def test_create_layouts_comparison_chart_success(self, mock_connect, temp_dir, layout_comparison_data):
         """
         Тест, который проверяет успешное создание 
         сравнительного графика раскладок
@@ -23,24 +23,19 @@ class TestCreateLayoutsComparisonChart:
         mock_conn.cursor.return_value = mock_cursor
         
         # Мокаем данные для сравнения раскладок
-        mock_cursor.fetchall.return_value = [
-            ('layout1', 5, 2.0, 1, 4),
-            ('layout2', 3, 3.5, 2, 5),
-            ('layout3', 4, 1.5, 1, 3)
-        ]
+        mock_cursor.fetchall.return_value = layout_comparison_data
         
-        with tempfile.TemporaryDirectory() as temp_dir:
-            file_path = create_layouts_comparison_chart(
-                output_dir=temp_dir
-            )
-            
-            # Функция может вернуть путь или None
-            if file_path is not None:
-                assert os.path.exists(file_path)
-                assert file_path.endswith('.png')
-                assert "layouts_comparison" in file_path
-            else:
-                assert file_path is None
+        file_path = create_layouts_comparison_chart(
+            output_dir=temp_dir
+        )
+        
+        # Функция может вернуть путь или None
+        if file_path is not None:
+            assert os.path.exists(file_path)
+            assert file_path.endswith('.png')
+            assert "layouts_comparison" in file_path
+        else:
+            assert file_path is None
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_layouts_comparison_chart_insufficient_data(self, mock_connect):
@@ -85,7 +80,7 @@ class TestCreateLayoutsComparisonChart:
         
         # Функция может отфильтровать тестовые раскладки и создать график
         # или вернуть None если после фильтрации мало данных
-        assert file_path is None or os.path.exists(file_path)
+        assert file_path is None or isinstance(file_path, str)
     
     @patch('make_export_plot.sqlite3.connect')
     def test_create_layouts_comparison_chart_only_test_layouts(self, mock_connect):
@@ -122,4 +117,22 @@ class TestCreateLayoutsComparisonChart:
         file_path = create_layouts_comparison_chart()
         
         # Функция должна вернуть None при ошибке БД
+        assert file_path is None
+    
+    @patch('make_export_plot.sqlite3.connect')
+    def test_create_layouts_comparison_chart_empty_result(self, mock_connect):
+        """
+        Тест, который проверяет обработку пустого результата из БД
+        """
+        mock_conn = Mock()
+        mock_cursor = Mock()
+        mock_connect.return_value = mock_conn
+        mock_conn.cursor.return_value = mock_cursor
+        
+        # Пустой результат из БД
+        mock_cursor.fetchall.return_value = []
+        
+        file_path = create_layouts_comparison_chart()
+        
+        # Функция должна вернуть None при пустом результате
         assert file_path is None

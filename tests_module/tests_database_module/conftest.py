@@ -58,50 +58,6 @@ def sample_analysis_result():
     }
 
 @pytest.fixture
-def sample_layout_dict():
-    """
-    Фикстура с тестовой раскладкой в виде словаря
-    """
-    return {
-        'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5,
-        'f': 6, 'g': 7, 'h': 8, 'i': 9, 'j': 10,
-        'k': 11, 'l': 12, 'm': 13, 'n': 14, 'o': 15
-    }
-
-@pytest.fixture
-def mock_tqdm():
-    """
-    Фикстура для мок-объекта tqdm (прогресс-бар)
-    """
-    with pytest.MonkeyPatch().context() as m:
-        mock_tqdm = MagicMock()
-        mock_pbar = MagicMock()
-        mock_tqdm.return_value = mock_pbar
-        
-        m.setattr('calculate_data.tqdm', mock_tqdm)
-        
-        yield mock_tqdm, mock_pbar
-
-@pytest.fixture
-def temp_test_file(tmp_path):
-    """
-    Фикстура для создания временного тестового файла
-    """
-    def _create_temp_file(content, extension=".txt"):
-        temp_file = tmp_path / f"test_file{extension}"
-        temp_file.write_text(content, encoding='utf-8')
-        return str(temp_file)
-    
-    return _create_temp_file
-
-@pytest.fixture(scope="session")
-def database_url():
-    """
-    Фикстура с URL тестовой базы данных (сессионная область)
-    """
-    return "file::memory:?cache=shared"
-
-@pytest.fixture
 def sample_analysis_history():
     """
     Фикстура с тестовой историей анализа
@@ -123,30 +79,3 @@ def expected_statistics():
         'min_errors': 1,
         'max_errors': 7
     }
-
-# Автоматически используемая фикстура для всех тестов
-@pytest.fixture(autouse=True)
-def setup_test_environment():
-    """
-    Автоматически выполняемая фикстура для настройки тестового окружения
-    """
-    # Сохраняем оригинальные sys.path
-    original_path = sys.path.copy()
-    
-    yield
-    
-    # Восстанавливаем sys.path после теста
-    sys.path = original_path
-
-# Фикстура с параметрами для параметризованных тестов
-@pytest.fixture(params=[
-    (1, 1, True),    # Существующая запись
-    (2, 0, False),   # Несуществующая запись  
-    (100, 1, True),  # Другая существующая запись
-    (-1, 0, False),  # Отрицательный ID
-])
-def delete_scenario(request):
-    """
-    Фикстура с параметрами для тестов удаления записей
-    """
-    return request.param

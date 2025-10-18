@@ -8,7 +8,7 @@
 
 import os
 import sys
-
+html_static_path = ['_static']
 # Добавляем пути к проекту для корректного импорта модулей
 sys.path.insert(0, os.path.abspath('../..'))  # путь к корню проекта
 sys.path.insert(0, os.path.abspath('../../tests_module'))  # путь к тестам

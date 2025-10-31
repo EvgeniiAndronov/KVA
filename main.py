@@ -10,7 +10,10 @@ from database_module.database import (
     take_lk_names_from_lk,
     save_analysis_result,
     get_analysis_history,
-    get_analysis_statistics
+    get_analysis_statistics,
+    get_finger_statistics,
+    get_aggregated_finger_statistics,
+    get_finger_statistics_comparison
 )
 from scan_module.read_files import (
     get_words_from_file, 
@@ -156,12 +159,13 @@ class MenuSystem:
         print("1) Обработать файл со словами (построчно)")
         print("2) Обработать текстовый файл (сплошной текст)")
         print("3) История анализов")
-        print("4) Создать графики сравнения")
-        print("5) Загрузить раскладку из файла")
-        print("6) Сменить раскладку")
+        print("4) Статистика по пальцам")
+        print("5) Создать графики сравнения")
+        print("6) Загрузить раскладку из файла")
+        print("7) Сменить раскладку")
         print("0) Назад в главное меню")
         
-        choice = self.get_user_choice(max_val=6)
+        choice = self.get_user_choice(max_val=7)
         
         if choice == 0:
             return MenuAction.CONTINUE
@@ -172,10 +176,12 @@ class MenuSystem:
         elif choice == 3:
             self.show_analysis_history()
         elif choice == 4:
-            self.create_comparison_charts()
+            self.show_finger_statistics()
         elif choice == 5:
-            self.load_layout_from_file()
+            self.create_comparison_charts()
         elif choice == 6:
+            self.load_layout_from_file()
+        elif choice == 7:
             self.current_layout = None
             self.current_layout_name = None
             return self.layout_selection_menu()
@@ -266,6 +272,18 @@ class MenuSystem:
         if result['total_characters'] > 0:
             coverage = (result['processed_characters'] / result['total_characters']) * 100
             print(f"   • Покрытие раскладкой: {coverage:.1f}%")
+        
+        # Статистика по пальцам
+        if result.get('finger_statistics'):
+            print(f"\n👆 СТАТИСТИКА ПО ПАЛЬЦАМ:")
+            finger_stats = result['finger_statistics']
+            # Сортируем по количеству нажатий (по убыванию)
+            sorted_fingers = sorted(finger_stats.items(), key=lambda x: x[1], reverse=True)
+            
+            total_presses = sum(finger_stats.values())
+            for finger, count in sorted_fingers:
+                percentage = (count / total_presses * 100) if total_presses > 0 else 0
+                print(f"   • {finger}: {count:,} нажатий ({percentage:.1f}%)")
         
         # Неизвестные символы
         if result['unknown_characters']:
@@ -452,14 +470,82 @@ class MenuSystem:
         
         input("\nНажмите Enter для продолжения...")
     
+    def show_finger_statistics(self):
+        """Показывает статистику по пальцам"""
+        self.display_menu_header(f"СТАТИСТИКА ПО ПАЛЬЦАМ - {self.current_layout_name}")
+        
+        try:
+            # Получаем агрегированную статистику
+            finger_stats = get_aggregated_finger_statistics(self.current_layout_name)
+            
+            if not finger_stats:
+                print("❌ Нет данных по статистике пальцев для этой раскладки")
+                input("Нажмите Enter для продолжения...")
+                return
+            
+            print(f"📊 ОБЩАЯ СТАТИСТИКА ПО ПАЛЬЦАМ:")
+            
+            # Сортируем по количеству нажатий (по убыванию)
+            sorted_fingers = sorted(finger_stats.items(), key=lambda x: x[1], reverse=True)
+            total_presses = sum(finger_stats.values())
+            
+            print(f"   • Всего нажатий: {total_presses:,}")
+            print(f"   • Задействовано пальцев: {len(finger_stats)}")
+            print()
+            
+            print("📋 ДЕТАЛЬНАЯ СТАТИСТИКА:")
+            print(f"{'Палец':<15} {'Нажатий':<12} {'Процент':<10} {'Визуализация'}")
+            print("-" * 60)
+            
+            for finger, count in sorted_fingers:
+                percentage = (count / total_presses * 100) if total_presses > 0 else 0
+                # Создаем простую визуализацию
+                bar_length = int(percentage / 2)  # Масштабируем до 50 символов максимум
+                bar = "█" * bar_length + "░" * (25 - bar_length)
+                
+                print(f"{finger:<15} {count:<12,} {percentage:<9.1f}% {bar}")
+            
+            # Показываем топ-3 и аутсайдеров
+            print(f"\n🏆 ТОП-3 САМЫХ АКТИВНЫХ ПАЛЬЦЕВ:")
+            for i, (finger, count) in enumerate(sorted_fingers[:3], 1):
+                percentage = (count / total_presses * 100) if total_presses > 0 else 0
+                print(f"   {i}. {finger}: {count:,} нажатий ({percentage:.1f}%)")
+            
+            if len(sorted_fingers) > 3:
+                print(f"\n🔻 НАИМЕНЕЕ АКТИВНЫЕ ПАЛЬЦЫ:")
+                for finger, count in sorted_fingers[-3:]:
+                    percentage = (count / total_presses * 100) if total_presses > 0 else 0
+                    print(f"   • {finger}: {count:,} нажатий ({percentage:.1f}%)")
+            
+            # Анализ нагрузки
+            print(f"\n📈 АНАЛИЗ НАГРУЗКИ:")
+            if len(sorted_fingers) > 0:
+                max_presses = sorted_fingers[0][1]
+                min_presses = sorted_fingers[-1][1]
+                ratio = max_presses / min_presses if min_presses > 0 else float('inf')
+                
+                print(f"   • Разброс нагрузки: {ratio:.1f}x")
+                if ratio > 10:
+                    print("   ⚠️  Очень неравномерная нагрузка на пальцы!")
+                elif ratio > 5:
+                    print("   🟡 Умеренно неравномерная нагрузка")
+                else:
+                    print("   ✅ Относительно равномерная нагрузка")
+        
+        except Exception as e:
+            print(f"❌ Ошибка получения статистики пальцев: {e}")
+        
+        input("\nНажмите Enter для продолжения...")
+    
     def create_comparison_charts(self):
         """Создает сравнительные графики"""
         self.display_menu_header("СОЗДАНИЕ ГРАФИКОВ")
         print("1) График истории анализов текущей раскладки")
         print("2) Сравнение всех раскладок")
+        print("3) Сравнительные графики статистики пальцев")
         print("0) Назад")
         
-        choice = self.get_user_choice(max_val=2)
+        choice = self.get_user_choice(max_val=3)
         
         if choice == 0:
             return
@@ -478,11 +564,75 @@ class MenuSystem:
                     print(f"✅ Сравнительный график создан: {chart_path}")
                 else:
                     print("⚠️  Недостаточно данных для сравнения раскладок")
+            
+            elif choice == 3:
+                self._create_finger_comparison_charts()
         
         except Exception as e:
             print(f"❌ Ошибка создания графика: {e}")
         
         input("\nНажмите Enter для продолжения...")
+    
+    def _create_finger_comparison_charts(self):
+        """Создает сравнительные графики статистики пальцев"""
+        try:
+            from data_module.make_export_plot import create_finger_comparison_charts
+            
+            # Получаем список всех раскладок
+            layouts = take_lk_names_from_lk()
+            if len(layouts) < 2:
+                print("⚠️  Недостаточно раскладок для сравнения (минимум 2)")
+                return
+            
+            print("📊 Доступные раскладки для сравнения:")
+            for i, layout in enumerate(layouts, 1):
+                print(f"   {i}) {layout[0]}")
+            
+            print("\nВыберите раскладки для сравнения (введите номера через пробел):")
+            print("Например: 1 2 3")
+            
+            selection = input("--> ").strip().split()
+            
+            if len(selection) < 2:
+                print("❌ Выберите минимум 2 раскладки")
+                return
+            
+            # Собираем статистику по выбранным раскладкам
+            layouts_finger_stats = {}
+            
+            for sel in selection:
+                try:
+                    idx = int(sel) - 1
+                    if 0 <= idx < len(layouts):
+                        layout_name = layouts[idx][0]
+                        finger_stats = get_aggregated_finger_statistics(layout_name)
+                        
+                        if finger_stats:
+                            layouts_finger_stats[layout_name] = finger_stats
+                            print(f"✅ Загружена статистика для '{layout_name}': {sum(finger_stats.values()):,} нажатий")
+                        else:
+                            print(f"⚠️  Нет статистики пальцев для '{layout_name}'")
+                    else:
+                        print(f"❌ Неверный номер: {sel}")
+                except ValueError:
+                    print(f"❌ Неверный формат номера: {sel}")
+            
+            if len(layouts_finger_stats) < 2:
+                print("❌ Недостаточно данных для сравнения")
+                return
+            
+            # Создаем сравнительные графики
+            chart_paths = create_finger_comparison_charts(layouts_finger_stats)
+            
+            if chart_paths:
+                print(f"\n✅ Созданы сравнительные графики:")
+                for path in chart_paths:
+                    print(f"   📊 {path}")
+            else:
+                print("⚠️  Не удалось создать сравнительные графики")
+                
+        except Exception as e:
+            print(f"❌ Ошибка создания сравнительных графиков: {e}")
     
     def load_layout_from_file(self):
         """Загружает раскладку из файла"""
@@ -538,24 +688,12 @@ class MenuSystem:
     def _save_layout_to_db(self, layout: dict, layout_name: str):
         """Сохраняет раскладку в базу данных"""
         try:
-            import sqlite3
-            conn = sqlite3.connect("database.db")
-            cursor = conn.cursor()
+            from database_module.database import save_layout_to_db
             
-            # Удаляем старую раскладку с таким же именем
-            cursor.execute("DELETE FROM lk WHERE name_lk = ?", (layout_name,))
-            
-            # Добавляем новую раскладку
-            for symbol, error_value in layout.items():
-                cursor.execute(
-                    "INSERT INTO lk (name_lk, letter, error) VALUES (?, ?, ?)",
-                    (layout_name, symbol, error_value)
-                )
-            
-            conn.commit()
-            conn.close()
-            
-            print(f"✅ Раскладка '{layout_name}' сохранена в базу данных")
+            if save_layout_to_db(layout_name, layout):
+                print(f"✅ Раскладка '{layout_name}' сохранена в базу данных")
+            else:
+                print(f"❌ Не удалось сохранить раскладку '{layout_name}' в БД")
             
         except Exception as e:
             print(f"❌ Ошибка сохранения раскладки в БД: {e}")
@@ -583,6 +721,11 @@ def main():
     Главная функция программы
     """
     init_tables()
+    
+    # Выполняем миграцию БД для поддержки новых функций
+    from database_module.db_init import migrate_database
+    migrate_database()
+    
     make_mok_data("a", "test_en")
     menu_system = MenuSystem()
     menu_system.run()

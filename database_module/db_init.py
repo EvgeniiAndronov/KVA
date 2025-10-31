@@ -12,15 +12,27 @@ sql_querry_init_lk = """
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name_lk TEXT NOT NULL,
         letter TEXT NOT NULL,
-        error INTEGER
+        error INTEGER,
+        finger TEXT DEFAULT NULL
     ) 
+"""
+
+sql_querry_init_finger_stats = """
+    CREATE TABLE IF NOT EXISTS finger_statistics (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        analysis_id INTEGER NOT NULL,
+        finger_code TEXT NOT NULL,
+        press_count INTEGER NOT NULL,
+        FOREIGN KEY (analysis_id) REFERENCES data (id) ON DELETE CASCADE
+    )
 """
 
 import sqlite3
 
 def init_tables():
     """
-    Если таблицы не созданы, то он создаст две таблички - одну для хранения результатов рассчетов, а вторую для хранения раскладок.
+    Если таблицы не созданы, то он создаст три таблички - одну для хранения результатов рассчетов, 
+    вторую для хранения раскладок и третью для статистики по пальцам.
     """
 
     conn = sqlite3.connect("database.db")
@@ -28,6 +40,7 @@ def init_tables():
 
     cursor.execute(f"{sql_querry_init_lk}")
     cursor.execute(f"{sql_querry_init_db}")
+    cursor.execute(f"{sql_querry_init_finger_stats}")
 
     conn.commit()
     conn.close()
@@ -51,3 +64,33 @@ def make_mok_data(start_letter: str, name_test_lk: str):
     conn.close()
 
     print("add test data in database")
+
+
+def migrate_database():
+    """
+    Выполняет миграцию базы данных для поддержки новых функций
+    """
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    
+    try:
+        # Проверяем, есть ли колонка finger в таблице lk
+        cursor.execute("PRAGMA table_info(lk)")
+        columns = [column[1] for column in cursor.fetchall()]
+        
+        if 'finger' not in columns:
+            print("🔄 Добавляем колонку 'finger' в таблицу lk...")
+            cursor.execute("ALTER TABLE lk ADD COLUMN finger TEXT DEFAULT NULL")
+            print("✅ Колонка 'finger' добавлена")
+        
+        # Создаем таблицу finger_statistics если её нет
+        cursor.execute(sql_querry_init_finger_stats)
+        
+        conn.commit()
+        print("✅ Миграция базы данных завершена")
+        
+    except Exception as e:
+        print(f"❌ Ошибка миграции базы данных: {e}")
+        conn.rollback()
+    finally:
+        conn.close()

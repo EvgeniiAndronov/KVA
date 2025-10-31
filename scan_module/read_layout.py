@@ -290,7 +290,8 @@ def save_layout_to_file(layout: dict, filename: str, format_type: str = 'json') 
 
 def validate_layout(layout: dict) -> tuple[bool, list]:
     """
-    Валидирует раскладку на корректность
+    Валидирует раскладку на корректность.
+    Поддерживает как старый формат (число), так и новый ([штраф, палец]).
     
     Args:
         layout: Словарь раскладки для проверки
@@ -312,13 +313,33 @@ def validate_layout(layout: dict) -> tuple[bool, list]:
         if not isinstance(key, str):
             errors.append(f"Ключ '{key}' должен быть строкой")
         
-        if not isinstance(value, (int, float)):
-            errors.append(f"Значение для '{key}' должно быть числом, получено: {type(value)}")
+        # Проверяем старый формат (число)
+        if isinstance(value, (int, float)):
+            if value < 0:
+                errors.append(f"Значение для '{key}' не может быть отрицательным: {value}")
         
-        if isinstance(value, (int, float)) and value < 0:
-            errors.append(f"Значение для '{key}' не может быть отрицательным: {value}")
+        # Проверяем новый формат (список)
+        elif isinstance(value, list):
+            if len(value) < 2:
+                errors.append(f"Список для '{key}' должен содержать минимум 2 элемента [штраф, палец], получено: {len(value)}")
+                continue
+            
+            penalty, finger = value[0], value[1]
+            
+            if not isinstance(penalty, (int, float)):
+                errors.append(f"Штраф для '{key}' должен быть числом, получено: {type(penalty)}")
+            elif penalty < 0:
+                errors.append(f"Штраф для '{key}' не может быть отрицательным: {penalty}")
+            
+            if not isinstance(finger, str):
+                errors.append(f"Палец для '{key}' должен быть строкой, получено: {type(finger)}")
+            elif not finger.strip():
+                errors.append(f"Палец для '{key}' не может быть пустой строкой")
+        
+        else:
+            errors.append(f"Значение для '{key}' должно быть числом или списком [штраф, палец], получено: {type(value)}")
     
-    # Проверяем наличие основных символов
+    # Проверяем наличие основных символов (только ключи, не зависимо от формата значений)
     basic_chars = set('abcdefghijklmnopqrstuvwxyz')
     layout_chars = set(layout.keys())
     missing_chars = basic_chars - layout_chars

@@ -9,6 +9,14 @@ from datetime import datetime
 from typing import Dict, List, Any, Tuple
 import sqlite3
 
+# Импортируем новые функции для графиков пальцев
+from data_module.finger_charts import (
+    create_finger_pie_chart,
+    create_finger_bar_chart,
+    create_finger_comparison_chart,
+    create_hand_load_pie_chart
+)
+
 
 def create_analysis_charts(result: Dict[str, Any], layout_name: str, file_path: str, 
                           output_dir: str = "reports") -> List[str]:
@@ -33,20 +41,10 @@ def create_analysis_charts(result: Dict[str, Any], layout_name: str, file_path: 
     plt.rcParams['figure.figsize'] = (12, 8)
     plt.rcParams['font.size'] = 10
     
-    # 1. Круговая диаграмма покрытия символов
-    coverage_chart = _create_coverage_pie_chart(result, layout_name, timestamp, output_dir)
-    if coverage_chart:
-        created_files.append(coverage_chart)
-    
-    # 2. Гистограмма распределения ошибок
-    error_distribution_chart = _create_error_distribution_chart(result, layout_name, timestamp, output_dir)
-    if error_distribution_chart:
-        created_files.append(error_distribution_chart)
-    
-    # 3. Сравнительная диаграмма метрик
-    metrics_chart = _create_metrics_comparison_chart(result, layout_name, timestamp, output_dir)
-    if metrics_chart:
-        created_files.append(metrics_chart)
+    # Создаем только графики статистики пальцев (старые графики отключены)
+    if 'finger_statistics' in result and result['finger_statistics']:
+        finger_charts = create_finger_analysis_charts(result['finger_statistics'], layout_name, output_dir)
+        created_files.extend(finger_charts)
     
     return created_files
 
@@ -369,6 +367,94 @@ def create_layouts_comparison_chart(output_dir: str = "reports") -> str:
     except Exception as e:
         print(f"Ошибка создания сравнительного графика: {e}")
         return None
+
+
+def create_finger_analysis_charts(finger_stats: Dict[str, int], layout_name: str, 
+                                 output_dir: str = "reports") -> List[str]:
+    """
+    Создает набор графиков для анализа статистики пальцев
+    
+    Args:
+        finger_stats: Словарь статистики пальцев {finger_code: press_count}
+        layout_name: Название раскладки
+        output_dir: Директория для сохранения графиков
+    
+    Returns:
+        List[str]: Список путей к созданным графикам
+    """
+    if not finger_stats:
+        return []
+    
+    os.makedirs(output_dir, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    created_files = []
+    
+    try:
+        # 1. Круговая диаграмма статистики пальцев
+        pie_path = create_finger_pie_chart(
+            finger_stats, 
+            layout_name, 
+            os.path.join(output_dir, f"finger_pie_{layout_name}_{timestamp}.png")
+        )
+        created_files.append(pie_path)
+        
+        # 2. Столбчатая диаграмма нагрузки на пальцы
+        bar_path = create_finger_bar_chart(
+            finger_stats, 
+            layout_name, 
+            os.path.join(output_dir, f"finger_bar_{layout_name}_{timestamp}.png")
+        )
+        created_files.append(bar_path)
+        
+        # 3. Диаграмма нагрузки на руки
+        hand_path = create_hand_load_pie_chart(
+            finger_stats, 
+            layout_name, 
+            os.path.join(output_dir, f"hand_load_{layout_name}_{timestamp}.png")
+        )
+        created_files.append(hand_path)
+        
+        print(f"✅ Создано {len(created_files)} графиков статистики пальцев")
+        
+    except Exception as e:
+        print(f"❌ Ошибка создания графиков статистики пальцев: {e}")
+    
+    return created_files
+
+
+def create_finger_comparison_charts(layouts_finger_stats: Dict[str, Dict[str, int]], 
+                                  output_dir: str = "reports") -> List[str]:
+    """
+    Создает сравнительные графики статистики пальцев для нескольких раскладок
+    
+    Args:
+        layouts_finger_stats: Словарь {layout_name: {finger_code: press_count}}
+        output_dir: Директория для сохранения графиков
+    
+    Returns:
+        List[str]: Список путей к созданным графикам
+    """
+    if not layouts_finger_stats or len(layouts_finger_stats) < 2:
+        return []
+    
+    os.makedirs(output_dir, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    created_files = []
+    
+    try:
+        # Сравнительная диаграмма статистики пальцев
+        comp_path = create_finger_comparison_chart(
+            layouts_finger_stats,
+            os.path.join(output_dir, f"finger_comparison_{timestamp}.png")
+        )
+        created_files.append(comp_path)
+        
+        print(f"✅ Создан сравнительный график статистики пальцев")
+        
+    except Exception as e:
+        print(f"❌ Ошибка создания сравнительного графика: {e}")
+    
+    return created_files
 
 
 if __name__ == "__main__":

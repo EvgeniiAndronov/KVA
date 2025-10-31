@@ -74,7 +74,8 @@
     "-": [3.0,"pm"],
     "(": [3.0,"pb+pm"],
     ")": [4.0,"pm+lm"],
-    "_": [5.0,"pm+lm"]
+    "_": [5.0,"pm+lm"],
+    " ": [0.0, "bl"]
  },
   "metadata": {
     "name": "keyboard Zubachow",

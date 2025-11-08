@@ -1,28 +1,18 @@
 Модуль тестов (tests_module)
 ============================
 
-Модуль для тестирования функциональности проекта.
+Модуль для тестирования функциональности проекта. Теперь использует единые файлы тестов для каждого модуля вместо отдельных папок.
 
 .. automodule:: tests_module
    :members:
    :undoc-members:
    :show-inheritance:
 
-Подмодули
----------
-test_data
-~~~~~~~~~
-
-Тестирует корректность работы с тестовыми данными (форматы, загрузка, валидация).
-
-.. automodule:: tests_module.test_data
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
+Подмодули тестов
+----------------
 
 test_imports
-~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 Проверяет успешность импорта всех необходимых модулей и зависимостей.
 
@@ -31,32 +21,62 @@ test_imports
    :undoc-members:
    :show-inheritance:
 
-test_database
-~~~~~~~~~~~~~
+test_database_module
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Тестирует взаимодействие с базой данных (подключение, запросы, транзакции).
+Тестирует взаимодействие с базой данных (подключение, запросы, транзакции, статистика пальцев).
 
-.. automodule:: tests_module.test_database
+.. automodule:: tests_module.test_database_module
    :members:
    :undoc-members:
    :show-inheritance:
 
-test_processing
-~~~~~~~~~~~~~~~
+test_processing_module
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Проверяет логику обработки данных (алгоритмы, преобразования, результаты).
+Проверяет логику обработки данных (алгоритмы, преобразования, результаты, статистика пальцев).
 
-.. automodule:: tests_module.test_processing
+.. automodule:: tests_module.test_processing_module
    :members:
    :undoc-members:
    :show-inheritance:
 
-test_scan
-~~~~~~~~~
+test_scan_module
+~~~~~~~~~~~~~~~~~~~
 
-Тестирует функционал сканирования (например, файлов, директорий или внешних источников).
+Тестирует функционал сканирования (чтение файлов, работа с раскладками различных форматов).
 
-.. automodule:: tests_module.test_scan
+.. automodule:: tests_module.test_scan_module
    :members:
    :undoc-members:
    :show-inheritance:
+
+conftest
+~~~~~~~~~~~
+
+Содержит общие фикстуры и настройки для всех тестов.
+
+**Фикстуры:**
+
+* ``temp_file`` - временный файл с текстом
+* ``temp_db`` - временная база данных
+* ``sample_rules_old`` - правила в старом формате
+* ``test_analysis_result`` - результаты анализа со статистикой пальцев
+* ``test_layout_file`` - временный файл раскладки
+* Генераторы для потоковой обработки
+
+Запуск тестов
+-------------
+
+Для запуска всех тестов выполните:
+
+.. code-block:: bash
+
+   pytest tests_module/
+
+Для запуска конкретного модуля тестов:
+
+.. code-block:: bash
+
+   pytest tests_module/test_database_module.py
+   pytest tests_module/test_processing_module.py -v

@@ -1,10 +1,22 @@
-# Configuration file for the Sphinx documentation builder.
-#
-# For the full list of built-in configuration values, see the documentation:
-# https://www.sphinx-doc.org/en/master/usage/configuration.html
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../..'))
+sys.path.insert(0, os.path.abspath('../../KVA'))
+
+# Добавляем путь к корневой директории проекта (на уровень выше docs/source)
+project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, project_root)
+
+# Также добавляем путь к папке KVA
+kva_path = os.path.join(project_root, 'KVA')
+sys.path.insert(0, kva_path)
+
+# Для отладки - можно раскомментировать чтобы проверить пути
+print("Project root:", project_root)
+print("KVA path:", kva_path)
+print("Python paths:", sys.path)
 
 # -- Project information -----------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'kla'
 copyright = '2025, diana'
@@ -12,7 +24,6 @@ author = 'diana, sasha'
 release = '1.0'
 
 # -- General configuration ---------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
 extensions = [
     'sphinx.ext.autodoc',
@@ -45,7 +56,6 @@ exclude_patterns = []
 language = 'ru'
 
 # -- Options for HTML output -------------------------------------------------
-# https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']

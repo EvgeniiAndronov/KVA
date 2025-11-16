@@ -7,6 +7,34 @@ sql_querry_init_db = """
     )   
 """
 
+sql_querry_init_db_to_grafics = """
+    CREATE TABLE IF NOT EXISTS data_to_diograms (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name_lk TEXT NOT NULL,
+        count_errors INTEGER,
+        count_tap_bl INTEGER, 
+        count_tap_bl_e INTEGER, 
+        count_tap_bp INTEGER, 
+        count_tap_bp_e INTEGER, 
+        count_tap_ly INTEGER,
+        count_tap_ly_e INTEGER,
+        count_tap_py INTEGER,
+        count_tap_py_e INTEGER,
+        count_tap_ls INTEGER,
+        count_tap_ls_e INTEGER,
+        count_tap_ps INTEGER,
+        count_tap_ps_e INTEGER,
+        count_tap_lb INTEGER,
+        count_tap_lb_e INTEGER,
+        count_tap_pb INTEGER,
+        count_tap_pb_e INTEGER,
+        count_tap_lm INTEGER,
+        count_tap_lm_e INTEGER,
+        count_tap_pm INTEGER,
+        count_tap_pm_e INTEGER
+    )   
+"""
+
 sql_querry_init_lk = """
     CREATE TABLE IF NOT EXISTS lk (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,6 +69,7 @@ def init_tables():
     cursor.execute(f"{sql_querry_init_lk}")
     cursor.execute(f"{sql_querry_init_db}")
     cursor.execute(f"{sql_querry_init_finger_stats}")
+    cursor.execute(f"{sql_querry_init_db_to_grafics}")
 
     conn.commit()
     conn.close()

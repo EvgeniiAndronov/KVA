@@ -19,7 +19,8 @@ def plot_finger_usage_7_layouts_only_with_fines(
         layout_ant, fines_ant,
         layout_scoropis, fines_scoropis,
         layout_zubachev, fines_zubachev,
-        layout_rusfon, fines_rusfon
+        layout_rusfon, fines_rusfon,
+        ln
 ):
     """
     Рисует горизонтальную гистограмму, сравнивая нагрузки на пальцы
@@ -63,7 +64,8 @@ def plot_finger_usage_7_layouts_only_with_fines(
     ]
 
     # Названия раскладок для легенды. ЙЦУКЕН теперь последний.
-    layout_names = ['Диктор', 'Вызов', 'Ант', 'Скоропись', 'Зубачев', 'РусФон', 'Йцукен']
+    # layout_names = ['Диктор', 'Вызов', 'Ант', 'Скоропись', 'Зубачев', 'РусФон', 'Йцукен']
+    layout_names = ln
 
     num_fingers = len(fingers)
     num_layouts = len(all_layouts_load)

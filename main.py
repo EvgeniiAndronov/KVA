@@ -233,9 +233,14 @@ class MenuSystem:
         
         try:
             word_generator = get_words_from_file_stream(file_path, batch_size=5000)
-            result = make_processing_stream(word_generator, self.current_layout, total_words)
+            result = make_processing_stream(
+    word_generator, 
+    self.current_layout, 
+    total_words, 
+    layout_name=self.current_layout_name  # ← ДОБАВИТЬ ЭТУ СТРОКУ
+)
             self._display_detailed_results(result, file_path)
-            
+             
         except KeyboardInterrupt:
             print("\n❌ Обработка прервана пользователем")
     
@@ -245,7 +250,11 @@ class MenuSystem:
         words = get_words_from_file(file_path)
         print(f"📝 Загружено {len(words):,} слов")
         
-        result = make_processing(words, self.current_layout)
+        result = make_processing(
+    words, 
+    self.current_layout, 
+    layout_name=self.current_layout_name  # ← ДОБАВИТЬ ЭТУ СТРОКУ
+)
         self._display_detailed_results(result, file_path)
     
     def _display_detailed_results(self, result: dict, file_path: str):
@@ -356,7 +365,12 @@ class MenuSystem:
         
         try:
             text_generator = get_text_from_file_stream(file_path, chunk_size=16384)
-            result = make_text_processing_stream(text_generator, self.current_layout, total_chars)
+            result = make_text_processing_stream(
+    text_generator, 
+    self.current_layout, 
+    total_chars, 
+    layout_name=self.current_layout_name
+)
             self._display_detailed_results(result, file_path)
             
         except KeyboardInterrupt:
@@ -368,7 +382,11 @@ class MenuSystem:
         text = get_text_from_file(file_path)
         print(f"📝 Загружено {len(text):,} символов")
         
-        result = make_text_processing(text, self.current_layout)
+        result = make_text_processing(
+    text, 
+    self.current_layout, 
+    layout_name=self.current_layout_name
+)
         self._display_detailed_results(result, file_path)
     
     def _offer_save_and_export(self, result: dict, file_path: str):

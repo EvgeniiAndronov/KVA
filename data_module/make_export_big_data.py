@@ -1,120 +1,113 @@
 import sqlite3
 from GISTOGR import plot_finger_usage_7_layouts_only_with_fines
 
-def make_mok():
-    conn = sqlite3.connect("database.db")
-    cursor = conn.cursor()
 
-    cursor.execute(
-            """INSERT INTO data_to_diograms 
-            (name_lk, 
-        count_errors,
-        count_tap_bl, 
-        count_tap_bl_e, 
-        count_tap_bp, 
-        count_tap_bp_e, 
-        count_tap_ly,
-        count_tap_ly_e,
-        count_tap_py,
-        count_tap_py_e,
-        count_tap_ls,
-        count_tap_ls_e,
-        count_tap_ps,
-        count_tap_ps_e,
-        count_tap_lb,
-        count_tap_lb_e,
-        count_tap_pb,
-        count_tap_pb_e,
-        count_tap_lm,
-        count_tap_lm_e,
-        count_tap_pm,
-        count_tap_pm_e
-            ) 
-            VALUES (?,  ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)""",
-            ("test6", 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1)
-        )
-        
-
-    data = cursor.fetchall()
-    
-    conn.commit()
-    conn.close()
-
-# make_mok()
-
-def get_data_to_result_dioram() -> list:
+def get_data_for_diagrams() -> list:
     """
-
+    Получает все данные из таблицы data_to_diograms для построения диаграмм.
     """
     conn = sqlite3.connect("database.db")
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * from data_to_diograms")
-
+    cursor.execute("SELECT * FROM data_to_diograms")
     data = cursor.fetchall()
     
-    conn.commit()
     conn.close()
     
     return data
 
-def make_buty_data():
-    data = get_data_to_result_dioram()
-    print(data)
+
+def process_data_for_plotting():
+    """
+    Обрабатывает данные из базы и строит диаграммы.
+    """
+    data = get_data_for_diagrams()
+    
+    if not data:
+        print("Нет данных для построения диаграмм")
+        return
+    
+    # Группируем данные по названию раскладки
     result = {}
-    for d in data:
-        if not d[1] in result:
-            result[d[1]] = [d[i] for i in range(2, len(d))]
-        else:
-            for o in range(len(result[d[1]])):
-                result[d[1]][o] += d[o + 2] 
-
-    print(result)
+    for row in data:
+        layout_name = row[1]  # name_lk
+        if layout_name not in result:
+            # Инициализируем список нулями для всех полей (22 поля кроме id и name_lk)
+            result[layout_name] = [0] * 21
     
-    keys = []
-    fingers_tap = []
-    errors_finger = []
+    # Суммируем данные для каждой раскладки
+    for row in data:
+        layout_name = row[1]
+        for i in range(2, len(row)):  # Пропускаем id и name_lk
+            result[layout_name][i-2] += row[i] if row[i] is not None else 0
     
-    for key, value in result.items():
-        keys.append(key)
-        mid = []
-        mid.append(value[1])
-        mid.append(value[3])
-        mid.append(value[5])
-        mid.append(value[7])
-        mid.append(value[9])
-        mid.append(value[11])
-        mid.append(value[13])
-        mid.append(value[15])
-        mid.append(value[17])
-        mid.append(value[19])
-
-        er = []
-        er.append(value[2])
-        er.append(value[4])
-        er.append(value[6])
-        er.append(value[8])
-        er.append(value[10])
-        er.append(value[12])
-        er.append(value[14])
-        er.append(value[16])
-        er.append(value[18])
-        er.append(value[20])
-
-        fingers_tap.append(mid)
-        errors_finger.append(er)
-
-    print(fingers_tap, "\n", errors_finger, "\n", keys)
-
-    plot_finger_usage_7_layouts_only_with_fines(
-        fingers_tap[0], errors_finger[0], 
-        fingers_tap[1], errors_finger[1], 
-        fingers_tap[2], errors_finger[2], 
-        fingers_tap[3], errors_finger[3], 
-        fingers_tap[4], errors_finger[4], 
-        fingers_tap[5], errors_finger[5], 
-        fingers_tap[6], errors_finger[6],
+    # Подготавливаем данные для построения графиков
+    layout_names = []
+    fingers_tap_data = []
+    errors_finger_data = []
+    
+    for layout_name, values in result.items():
+        layout_names.append(layout_name)
+        
+        # Данные по нажатиям (четные индексы)
+        taps = [
+            values[1],   # count_tap_bl
+            values[3],   # count_tap_bp  
+            values[5],   # count_tap_ly
+            values[7],   # count_tap_py
+            values[9],   # count_tap_ls
+            values[11],  # count_tap_ps
+            values[13],  # count_tap_lb
+            values[15],  # count_tap_pb
+            values[17],  # count_tap_lm
+            values[19]   # count_tap_pm
+        ]
+        
+        # Данные по ошибкам (нечетные индексы)
+        errors = [
+            values[2],   # count_tap_bl_e
+            values[4],   # count_tap_bp_e
+            values[6],   # count_tap_ly_e
+            values[8],   # count_tap_py_e
+            values[10],  # count_tap_ls_e
+            values[12],  # count_tap_ps_e
+            values[14],  # count_tap_lb_e
+            values[16],  # count_tap_pb_e
+            values[18],  # count_tap_lm_e
+            values[20]   # count_tap_pm_e
+        ]
+        
+        fingers_tap_data.append(taps)
+        errors_finger_data.append(errors)
+    
+    print(f"Раскладки: {layout_names}")
+    print(f"Данные по нажатиям: {fingers_tap_data}")
+    print(f"Данные по ошибкам: {errors_finger_data}")
+    
+    # Строим диаграммы (максимум 7 раскладок)
+    max_layouts = min(7, len(layout_names))
+    
+    if max_layouts >= 1:
+        plot_finger_usage_7_layouts_only_with_fines(
+            *[item for layout in zip(fingers_tap_data[:max_layouts], errors_finger_data[:max_layouts]) for item in layout], layout_names
         )
+    else:
+        print("Недостаточно данных для построения диаграмм")
 
 
-make_buty_data()
+def clear_database():
+    """
+    Очищает таблицу data_to_diograms.
+    """
+    conn = sqlite3.connect("database.db")
+    cursor = conn.cursor()
+    
+    cursor.execute("DELETE FROM data_to_diograms")
+    conn.commit()
+    conn.close()
+    
+    print("База данных очищена")
+
+
+if __name__ == "__main__":
+    process_data_for_plotting()

@@ -2,6 +2,7 @@ import pytest
 import tempfile
 import os
 import sys
+import json
 
 # Пути к модулям
 current_dir = os.path.dirname(__file__)
@@ -11,7 +12,9 @@ sys.path.insert(0, os.path.join(current_dir, '../database_module'))
 
 @pytest.fixture
 def temp_file():
-    """Временный файл с текстом"""
+    """
+    Временный файл с текстом
+    """
     fd, temp_path = tempfile.mkstemp(suffix='.txt')
     with os.fdopen(fd, 'w') as f:
         f.write("hello\nworld\ntest\nfile\ncontent\n")
@@ -21,22 +24,30 @@ def temp_file():
 
 @pytest.fixture
 def sample_word_list():
-    """Простой список слов"""
+    """
+    Простой список слов
+    """
     return ["hello", "world", "test"]
 
 @pytest.fixture
 def sample_rules_old():
-    """Простые правила (старый формат)"""
+    """
+    Простые правила (старый формат)
+    """
     return {"a": 1, "b": 2, "c": 3, "h": 1, "e": 2, "l": 1, "o": 3, "w": 2, "r": 1, "d": 1}
 
 @pytest.fixture
 def sample_text():
-    """Простой текст"""
+    """
+    Простой текст
+    """
     return "hello world test"
 
 @pytest.fixture
 def temp_db():
-    """Временная база данных с тестовыми данными"""
+    """
+    Временная база данных с тестовыми данными
+    """
     import database
     original_db = getattr(database, 'DB_PATH', 'database.db')
     
@@ -57,3 +68,64 @@ def temp_db():
     database.DB_PATH = original_db
     if os.path.exists(temp_path):
         os.unlink(temp_path)
+
+@pytest.fixture
+def test_analysis_result():
+    """
+    Тестовые данные для анализа
+    """
+    return {
+        'total_errors': 10,
+        'total_words': 5,
+        'total_characters': 25,
+        'finger_statistics': {'index': 5, 'middle': 5}
+    }
+
+@pytest.fixture
+def test_analysis_result_minimal():
+    """
+    Минимальные тестовые данные для анализа
+    """
+    return {
+        'total_errors': 10,
+        'total_words': 5,
+        'total_characters': 25
+    }
+
+@pytest.fixture
+def test_layout_data():
+    """
+    Тестовые данные раскладки
+    """
+    return {"a": 1, "b": 2, "c": 3}
+
+@pytest.fixture
+def test_layout_file():
+    """
+    Временный файл раскладки
+    """
+    test_layout = {"a": 1, "b": 2, "c": 3}
+    fd, temp_path = tempfile.mkstemp(suffix='.json')
+    with os.fdopen(fd, 'w') as f:
+        json.dump(test_layout, f)
+    yield temp_path
+    if os.path.exists(temp_path):
+        os.unlink(temp_path)
+
+@pytest.fixture
+def word_generator(sample_word_list):
+    """
+    Генератор слов для потоковой обработки
+    """
+    def generator():
+        yield sample_word_list
+    return generator
+
+@pytest.fixture
+def text_generator(sample_text):
+    """
+    Генератор текста для потоковой обработки
+    """
+    def generator():
+        yield sample_text
+    return generator

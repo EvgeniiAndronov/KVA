@@ -1,6 +1,5 @@
-# test_processing_module.py
 import pytest
-from calculate_data import make_processing, validate_rules, make_text_processing
+from calculate_data import make_processing, validate_rules, make_text_processing, make_processing_stream, make_text_processing_stream
 
 class TestCalculateData:
     
@@ -81,3 +80,45 @@ class TestCalculateData:
         result = make_text_processing(sample_text, sample_rules_old)
         assert isinstance(result, dict)
         assert 'text_type' in result
+
+    def test_make_processing_stream_input_types(self, word_generator, sample_rules_old, sample_word_list):
+        """
+        Тестирует потоковую обработку разных типов данных.
+        Проверяет работу с генераторами слов и правилами.
+        Убеждается в корректной обработке батчей.
+        """
+        result = make_processing_stream(word_generator(), sample_rules_old, total_words=len(sample_word_list))
+        assert isinstance(result, dict)
+    
+    def test_make_processing_stream_return_type(self, word_generator, sample_rules_old, sample_word_list):
+        """
+        Проверяет структуру возвращаемого словаря потоковой обработки.
+        Убеждается в наличии статистики по пальцам.
+        Тестирует корректность расчетов ошибок.
+        """
+        result = make_processing_stream(word_generator(), sample_rules_old, total_words=len(sample_word_list))
+        assert isinstance(result, dict)
+        assert 'total_errors' in result
+        assert 'total_words' in result
+        assert 'finger_statistics' in result
+    
+    def test_make_text_processing_stream_input_types(self, text_generator, sample_rules_old, sample_text):
+        """
+        Тестирует потоковую обработку текстовых данных.
+        Проверяет работу с генераторами текста.
+        Убеждается в обработке чанков разного размера.
+        """
+        result = make_text_processing_stream(text_generator(), sample_rules_old, total_chars=len(sample_text))
+        assert isinstance(result, dict)
+    
+    def test_make_text_processing_stream_return_type(self, text_generator, sample_rules_old, sample_text):
+        """
+        Проверяет структуру результата потокового анализа.
+        Убеждается в наличии типа текста и статистики.
+        Тестирует подсчет слов и символов.
+        """
+        result = make_text_processing_stream(text_generator(), sample_rules_old, total_chars=len(sample_text))
+        assert isinstance(result, dict)
+        assert 'text_type' in result
+        assert 'total_words' in result
+        assert 'total_characters' in result

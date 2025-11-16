@@ -64,7 +64,7 @@ uv run check_project.py
 - `example_layouts/dvorak_layout.csv` - Dvorak в CSV  
 - `example_layouts/colemak_layout.txt` - Colemak в TXT
 
-###Примеры графиков:
+### Примеры графиков:
 ![Сравнение раскладок](graphics/1.jpg)
 ![Нагрузка на пальцы](graphics/2.jpg)
 ![Нагрузка на руки](graphics/3.jpg)

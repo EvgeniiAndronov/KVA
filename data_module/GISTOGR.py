@@ -140,12 +140,12 @@ fines_rusfon = [70, 80, 110, 100, 50, 25, 18, 8, 22, 18]
 fines_ytsuken = [100, 50, 150, 120, 60, 20, 15, 5, 40, 30]  # Йцукен (теперь последний)
 
 # --- Вызов функции для построения только гистограммы с штрафами ---
-plot_finger_usage_7_layouts_only_with_fines(
-    layout_ytsuken, fines_ytsuken,
-    layout_dictor, fines_dictor,
-    layout_visov, fines_visov,
-    layout_ant, fines_ant,
-    layout_scoropis, fines_scoropis,
-    layout_zubachev, fines_zubachev,
-    layout_rusfon, fines_rusfon
-)
+# plot_finger_usage_7_layouts_only_with_fines(
+#     layout_ytsuken, fines_ytsuken,
+#     layout_dictor, fines_dictor,
+#     layout_visov, fines_visov,
+#     layout_ant, fines_ant,
+#     layout_scoropis, fines_scoropis,
+#     layout_zubachev, fines_zubachev,
+#     layout_rusfon, fines_rusfon
+# )

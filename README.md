@@ -67,9 +67,9 @@ uv run check_project.py
 ### Примеры графиков:
 ![Сравнение раскладок](graphics/1.jpg)
 ![Нагрузка на пальцы](graphics/2.jpg)
-![Нагрузка на руки](graphics/4.jpg)
-![Удобство нажатий](graphics/5.jpg)
-![Удобные переборы](graphics/6.jpg)
+![Нагрузка на руки](graphics/4.png)
+![Удобство нажатий](graphics/5.png)
+![Удобные переборы](graphics/6.png)
 
 ## Структура проекта
 

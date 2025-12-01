@@ -106,7 +106,7 @@ def plot_finger_usage_7_layouts_only_with_fines(
         if current_max_load > max_total_load:
             max_total_load = current_max_load
 
-    ax.set_ylabel('Пальцы')
+    ax.set_ylabel('Пальцы') 
     ax.set_xlabel('Количество нажатий + количество штрафов')
     ax.set_title('Сравнение нагрузок и штрафов на пальцы по раскладкам', fontsize=14, fontweight='bold')
 

@@ -68,7 +68,7 @@ uv run check_project.py
 ![Сравнение раскладок](graphics/1.jpg)
 ![Нагрузка на пальцы](graphics/2.jpg)
 ![Нагрузка на руки](graphics/photo1.jpg)
-![Удобные переборы](graphics/photo1.jpg)
+![Удобные переборы](graphics/photo2.jpg)
 
 ## Структура проекта
 

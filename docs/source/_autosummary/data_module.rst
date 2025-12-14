@@ -14,5 +14,6 @@
    GISTOGR
    LIN
    finger_charts
+   make_export_big_data
    make_export_file
    make_export_plot

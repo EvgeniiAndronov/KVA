@@ -1,0 +1,528 @@
+{
+  "fingerNames": {
+    "L1": "Мизинец левой",
+    "L2": "Безымянный левый",
+    "L3": "Средний левый",
+    "L4": "Указательный левый",
+    "R1": "Указательный правый",
+    "R2": "Средний правый",
+    "R3": "Безымянный правый",
+    "R4": "Мизинец правый"
+  },
+  "layout": {  
+"б":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 2,
+      "column": 2,
+      "modifiers": []
+    },
+"ч":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 2,
+      "column": 2,
+      "modifiers": []
+    },
+"ц":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 2,
+      "column": 2,
+      "modifiers": ["alt"]
+    },
+"ш":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 4,
+      "column": 2,
+      "modifiers": []
+    },
+"ы":{
+      "hand": "left",
+      "finger": "L2",
+      "row": 2,
+      "column": 3,
+      "modifiers": []
+    },
+"и":{
+      "hand": "left",
+      "finger": "L2",
+      "row": 3,
+      "column": 3,
+      "modifiers": []
+    },
+"х":{
+      "hand": "left",
+      "finger": "L2",
+      "row": 4,
+      "column": 3,
+      "modifiers": []
+    },   
+"о":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 2,
+      "column": 4,
+      "modifiers": []
+    },
+"е":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 3,
+      "column": 4,
+      "modifiers": []
+    },
+"э":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 3,
+      "column": 4,
+      "modifiers": ["alt"]
+    },
+"й":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 4,
+      "column": 4,
+      "modifiers": []
+    },    
+"у":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 2,
+      "column": 5,
+      "modifiers": []
+    },
+"ю":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 2,
+      "column": 5,
+      "modifiers": ["alt"]
+    },
+"а":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 3,
+      "column": 5,
+      "modifiers": []
+    },
+"к":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 4,
+      "column": 5,
+      "modifiers": []
+    },
+"ь":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 2,
+      "column": 6,
+      "modifiers": []
+    },
+",":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 3,
+      "column": 6,
+      "modifiers": []
+    },
+";":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 3,
+      "column": 6,
+      "modifiers": ["shift"]
+    },
+"-":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 4,
+      "column": 6,
+      "modifiers": ["shift"]
+    },
+"ё":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 2,
+      "column": 7,
+      "modifiers": []
+    },
+".":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 3,
+      "column": 7,
+      "modifiers": []
+    },
+":":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 3,
+      "column": 7,
+      "modifiers": ["shift"]
+    },
+"?":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 4,
+      "column": 7,
+      "modifiers": []
+    },   
+"л":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 2,
+      "column": 8,
+      "modifiers": []
+    },
+"н":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 3,
+      "column": 8,
+      "modifiers": []
+    },
+"щ":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 3,
+      "column": 8,
+      "modifiers": ["alt"]
+    },
+"р":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 4,
+      "column": 8,
+      "modifiers": []
+    },
+"д":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 2,
+      "column": 9,
+      "modifiers": []
+    },
+"т":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 3,
+      "column": 9,
+      "modifiers": []
+    },
+"ъ":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 3,
+      "column": 9,
+      "modifiers": ["alt"]
+    },
+"м":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 4,
+      "column": 9,
+      "modifiers": []
+    },
+"я":{
+      "hand": "right",
+      "finger": "R3",
+      "row": 2,
+      "column": 10,
+      "modifiers": []
+    },
+"с":{
+      "hand": "right",
+      "finger": "R3",
+      "row": 3,
+      "column": 10,
+      "modifiers": []
+    },
+"ф":{
+      "hand": "right",
+      "finger": "R3",
+      "row": 4,
+      "column": 10,
+      "modifiers": []
+    },
+"г":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 2,
+      "column": 11,
+      "modifiers": []
+    },
+"в":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 3,
+      "column": 11,
+      "modifiers": []
+    },
+"п":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 4,
+      "column": 11,
+      "modifiers": []
+    },
+"!":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 1,
+      "column": 12,
+      "modifiers": []
+    },    
+"ж":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 2,
+      "column": 12,
+      "modifiers": []
+    },
+"з":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 2,
+      "column": 12,
+      "modifiers": []
+    },
+
+
+
+"Б":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 2,
+      "column": 2,
+      "modifiers": ["shift"]
+    },
+"Ч":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 2,
+      "column": 2,
+      "modifiers": ["shift"]
+    },
+"Ц":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 2,
+      "column": 2,
+      "modifiers": ["alt", "shift"]
+    },
+"Ш":{
+      "hand": "left",
+      "finger": "L1",
+      "row": 4,
+      "column": 2,
+      "modifiers": ["shift"]
+    },
+"Ы":{
+      "hand": "left",
+      "finger": "L2",
+      "row": 2,
+      "column": 3,
+      "modifiers": ["shift"]
+    },
+"И":{
+      "hand": "left",
+      "finger": "L2",
+      "row": 3,
+      "column": 3,
+      "modifiers": ["shift"]
+    },
+"Х":{
+      "hand": "left",
+      "finger": "L2",
+      "row": 4,
+      "column": 3,
+      "modifiers": ["shift"]
+    },   
+"О":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 2,
+      "column": 4,
+      "modifiers": ["shift"]
+    },
+"Е":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 3,
+      "column": 4,
+      "modifiers": ["shift"]
+    },
+"Э":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 3,
+      "column": 4,
+      "modifiers": ["alt", "shift"]
+    },
+"Й":{
+      "hand": "left",
+      "finger": "L3",
+      "row": 4,
+      "column": 4,
+      "modifiers": ["shift"]
+    },    
+"У":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 2,
+      "column": 5,
+      "modifiers": ["shift"]
+    },
+"Ю":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 2,
+      "column": 5,
+      "modifiers": ["alt", "shift"]
+    },
+"А":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 3,
+      "column": 5,
+      "modifiers": ["shift"]
+    },
+"К":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 4,
+      "column": 5,
+      "modifiers": ["shift"]
+    },
+"Ь":{
+      "hand": "left",
+      "finger": "L4",
+      "row": 2,
+      "column": 6,
+      "modifiers": ["shift"]
+    },
+"Ё":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 2,
+      "column": 7,
+      "modifiers": ["shift"]
+    }, 
+"Л":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 2,
+      "column": 8,
+      "modifiers": ["shift"]
+    },
+"Н":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 3,
+      "column": 8,
+      "modifiers": ["shift"]
+    },
+"Щ":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 3,
+      "column": 8,
+      "modifiers": ["alt","shift"]
+    },
+"Р":{
+      "hand": "right",
+      "finger": "R1",
+      "row": 4,
+      "column": 8,
+      "modifiers": ["shift"]
+    },
+"Д":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 2,
+      "column": 9,
+      "modifiers": ["shift"]
+    },
+"Т":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 3,
+      "column": 9,
+      "modifiers": ["shift"]
+    },
+"Ъ":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 3,
+      "column": 9,
+      "modifiers": ["alt", "shift"]
+    },
+"М":{
+      "hand": "right",
+      "finger": "R2",
+      "row": 4,
+      "column": 9,
+      "modifiers": ["shift"]
+    },
+"Я":{
+      "hand": "right",
+      "finger": "R3",
+      "row": 2,
+      "column": 10,
+      "modifiers": ["shift"]
+    },
+"С":{
+      "hand": "right",
+      "finger": "R3",
+      "row": 3,
+      "column": 10,
+      "modifiers": ["shift"]
+    },
+"Ф":{
+      "hand": "right",
+      "finger": "R3",
+      "row": 4,
+      "column": 10,
+      "modifiers": ["shift"]
+    },
+"Г":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 2,
+      "column": 11,
+      "modifiers": ["shift"]
+    },
+"В":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 3,
+      "column": 11,
+      "modifiers": ["shift"]
+    },
+"П":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 4,
+      "column": 11,
+      "modifiers": ["shift"]
+    },   
+"Ж":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 2,
+      "column": 12,
+      "modifiers": ["shift"]
+    },
+"З":{
+      "hand": "right",
+      "finger": "R4",
+      "row": 2,
+      "column": 12,
+      "modifiers": ["shift"]
+    }
+  }
+}

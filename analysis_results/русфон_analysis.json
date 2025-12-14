@@ -1,0 +1,831 @@
+{
+  "layout_name": "русфон",
+  "file_analyzed": "1grams-3.txt",
+  "total_words_in_file": 1054065,
+  "words_analyzed": 500000,
+  "comprehensive_stats": {
+    "layout_name": "русфон",
+    "by_length": {
+      "2": {
+        "total": 3828830,
+        "comfortable": 1201705,
+        "partial": 762811,
+        "uncomfortable": 1864314,
+        "comfortable_percent": 31.38569745849254,
+        "partial_percent": 19.92282237654845,
+        "uncomfortable_percent": 48.691480164959
+      },
+      "3": {
+        "total": 3343902,
+        "comfortable": 60715,
+        "partial": 53305,
+        "uncomfortable": 3229882,
+        "comfortable_percent": 1.8156931632565785,
+        "partial_percent": 1.5940957599833965,
+        "uncomfortable_percent": 96.59021107676003
+      },
+      "4": {
+        "total": 2860938,
+        "comfortable": 1400,
+        "partial": 1157,
+        "uncomfortable": 2858381,
+        "comfortable_percent": 0.048934999639978216,
+        "partial_percent": 0.040441281845324854,
+        "uncomfortable_percent": 99.9106237185147
+      },
+      "5": {
+        "total": 2384053,
+        "comfortable": 16,
+        "partial": 0,
+        "uncomfortable": 2384037,
+        "comfortable_percent": 0.0006711260194299372,
+        "partial_percent": 0.0,
+        "uncomfortable_percent": 99.99932887398057
+      }
+    },
+    "total_sequences": 12417723,
+    "total_words": 500000,
+    "words_analyzed": 484928,
+    "sequences_with_modifiers": 600865,
+    "comfort_examples": {
+      "comfortable": [
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "right",
+          "sequence": "он",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "right",
+          "sequence": "по",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "left",
+          "sequence": "ег",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "left",
+          "sequence": "вс",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "left",
+          "sequence": "се",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "left",
+          "sequence": "за",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "right",
+          "sequence": "ло",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "right",
+          "sequence": "ол",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_characters",
+          "hand_type": "single_hand",
+          "sequence": "ее",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "right",
+          "sequence": "ли",
+          "length": 2,
+          "has_modifiers": false
+        }
+      ],
+      "partial": [
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "же",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "но",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ыл",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "та",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ко",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "Но",
+          "length": 2,
+          "has_modifiers": true
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ил",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ни",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "гд",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "да",
+          "length": 2,
+          "has_modifiers": false
+        }
+      ],
+      "uncomfortable": [
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "не",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "на",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "чт",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "то",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "что",
+          "length": 3,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "ка",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "ак",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "как",
+          "length": 3,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "го",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "его",
+          "length": 3,
+          "has_modifiers": false
+        }
+      ]
+    },
+    "finger_analysis": {
+      "finger_load": {
+        "L1": 20.76502732240437,
+        "L2": 7.650273224043716,
+        "L3": 6.557377049180328,
+        "L4": 15.300546448087433,
+        "R1": 14.207650273224044,
+        "R4": 24.59016393442623,
+        "R2": 5.46448087431694,
+        "R3": 5.46448087431694
+      },
+      "top_two_fingers_load": 45.3551912568306,
+      "max_distances": {
+        "L1": 4,
+        "L2": 4,
+        "L3": 2,
+        "L4": 4,
+        "R1": 4,
+        "R2": 2,
+        "R3": 2,
+        "R4": 5
+      },
+      "overall_max_distance": 5,
+      "goodness_score": 0.7035519125683061,
+      "normalized_score": 0.5870088211708099,
+      "modifier_stats": {
+        "total_symbols": 73,
+        "with_shift": 37,
+        "with_alt": 0,
+        "with_both": 0,
+        "no_modifiers": 36,
+        "shift_percent": 50.68493150684932,
+        "alt_percent": 0.0
+      }
+    },
+    "overall": {
+      "comfortable": 1263836,
+      "partial": 817273,
+      "uncomfortable": 10336614,
+      "total": 12417723,
+      "comfortable_percent": 10.177679112346121,
+      "partial_percent": 6.581504515763478,
+      "uncomfortable_percent": 83.2408163718904,
+      "modifiers_percent": 4.838769555416883
+    },
+    "top_comfortable_sequences": {
+      "ст": 53164,
+      "ер": 38237,
+      "ны": 35698,
+      "ли": 34509,
+      "по": 34435,
+      "ом": 30192,
+      "ат": 29222,
+      "нн": 28289,
+      "ин": 27373,
+      "ло": 25937,
+      "ол": 25787,
+      "ки": 24881,
+      "ет": 24363,
+      "ар": 21955,
+      "он": 21387,
+      "ве": 21375,
+      "ас": 21341,
+      "за": 21184,
+      "ав": 20263,
+      "ой": 19664
+    },
+    "top_partial_sequences": {
+      "но": 52387,
+      "ра": 47865,
+      "ва": 42654,
+      "ко": 42345,
+      "ре": 37402,
+      "ни": 37039,
+      "те": 29426,
+      "ес": 25678,
+      "та": 24759,
+      "ми": 23206,
+      "ся": 21952,
+      "ил": 19688,
+      "ть": 17857,
+      "ев": 16827,
+      "мо": 14140,
+      "да": 12924,
+      "ич": 12796,
+      "оп": 11879,
+      "тв": 11639,
+      "бе": 9829
+    },
+    "top_uncomfortable_sequences": {
+      "ов": 53027,
+      "ен": 49807,
+      "ро": 44121,
+      "ал": 38525,
+      "ан": 37421,
+      "ск": 34589,
+      "на": 34049,
+      "ос": 33175,
+      "пр": 31551,
+      "ка": 30746,
+      "ор": 30164,
+      "ри": 28720,
+      "ел": 27996,
+      "го": 27811,
+      "ла": 27509,
+      "не": 27036,
+      "ле": 26782,
+      "во": 26541,
+      "то": 25434,
+      "ль": 24485
+    }
+  },
+  "plot_data": {
+    "layout_name": "русфон",
+    "by_length": {
+      "lengths": [
+        "2 символа",
+        "3 символа",
+        "4 символа",
+        "5 символов"
+      ],
+      "comfortable": [
+        1201705,
+        60715,
+        1400,
+        16
+      ],
+      "partial": [
+        762811,
+        53305,
+        1157,
+        0
+      ],
+      "uncomfortable": [
+        1864314,
+        3229882,
+        2858381,
+        2384037
+      ],
+      "comfortable_percent": [
+        31.38569745849254,
+        1.8156931632565785,
+        0.048934999639978216,
+        0.0006711260194299372
+      ],
+      "partial_percent": [
+        19.92282237654845,
+        1.5940957599833965,
+        0.040441281845324854,
+        0.0
+      ],
+      "uncomfortable_percent": [
+        48.691480164959,
+        96.59021107676003,
+        99.9106237185147,
+        99.99932887398057
+      ],
+      "total": [
+        3828830,
+        3343902,
+        2860938,
+        2384053
+      ]
+    },
+    "overall_stats": {
+      "comfortable": 1263836,
+      "partial": 817273,
+      "uncomfortable": 10336614,
+      "comfortable_percent": 10.177679112346121,
+      "partial_percent": 6.581504515763478,
+      "uncomfortable_percent": 83.2408163718904,
+      "modifiers_percent": 4.838769555416883,
+      "total_sequences": 12417723
+    },
+    "finger_analysis": {
+      "finger_load": {
+        "L1": 20.76502732240437,
+        "L2": 7.650273224043716,
+        "L3": 6.557377049180328,
+        "L4": 15.300546448087433,
+        "R1": 14.207650273224044,
+        "R4": 24.59016393442623,
+        "R2": 5.46448087431694,
+        "R3": 5.46448087431694
+      },
+      "top_two_fingers_load": 45.3551912568306,
+      "max_distances": {
+        "L1": 4,
+        "L2": 4,
+        "L3": 2,
+        "L4": 4,
+        "R1": 4,
+        "R2": 2,
+        "R3": 2,
+        "R4": 5
+      },
+      "overall_max_distance": 5,
+      "goodness_score": 0.7035519125683061,
+      "normalized_score": 0.5870088211708099,
+      "modifier_stats": {
+        "total_symbols": 73,
+        "with_shift": 37,
+        "with_alt": 0,
+        "with_both": 0,
+        "no_modifiers": 36,
+        "shift_percent": 50.68493150684932,
+        "alt_percent": 0.0
+      }
+    },
+    "examples": {
+      "comfortable": [
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "right",
+          "sequence": "он",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "right",
+          "sequence": "по",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "left",
+          "sequence": "ег",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "left",
+          "sequence": "вс",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "left",
+          "sequence": "се",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "left",
+          "sequence": "за",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "right",
+          "sequence": "ло",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_finger",
+          "hand_type": "right",
+          "sequence": "ол",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "same_characters",
+          "hand_type": "single_hand",
+          "sequence": "ее",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "comfortable",
+          "reason": "outside_to_inside",
+          "hand_type": "right",
+          "sequence": "ли",
+          "length": 2,
+          "has_modifiers": false
+        }
+      ],
+      "partial": [
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "же",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "но",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ыл",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "та",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ко",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "Но",
+          "length": 2,
+          "has_modifiers": true
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ил",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "right",
+          "sequence": "ни",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "гд",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "partial",
+          "reason": "inside_to_outside",
+          "hand_type": "left",
+          "sequence": "да",
+          "length": 2,
+          "has_modifiers": false
+        }
+      ],
+      "uncomfortable": [
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "не",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "на",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "чт",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "то",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "что",
+          "length": 3,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "ка",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "ак",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "как",
+          "length": 3,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "го",
+          "length": 2,
+          "has_modifiers": false
+        },
+        {
+          "comfort": "uncomfortable",
+          "reason": "hand_change_with_modifiers",
+          "hand_type": "both",
+          "sequence": "его",
+          "length": 3,
+          "has_modifiers": false
+        }
+      ]
+    },
+    "top_sequences": {
+      "comfortable": {
+        "ст": 53164,
+        "ер": 38237,
+        "ны": 35698,
+        "ли": 34509,
+        "по": 34435,
+        "ом": 30192,
+        "ат": 29222,
+        "нн": 28289,
+        "ин": 27373,
+        "ло": 25937,
+        "ол": 25787,
+        "ки": 24881,
+        "ет": 24363,
+        "ар": 21955,
+        "он": 21387,
+        "ве": 21375,
+        "ас": 21341,
+        "за": 21184,
+        "ав": 20263,
+        "ой": 19664
+      },
+      "partial": {
+        "но": 52387,
+        "ра": 47865,
+        "ва": 42654,
+        "ко": 42345,
+        "ре": 37402,
+        "ни": 37039,
+        "те": 29426,
+        "ес": 25678,
+        "та": 24759,
+        "ми": 23206,
+        "ся": 21952,
+        "ил": 19688,
+        "ть": 17857,
+        "ев": 16827,
+        "мо": 14140,
+        "да": 12924,
+        "ич": 12796,
+        "оп": 11879,
+        "тв": 11639,
+        "бе": 9829
+      },
+      "uncomfortable": {
+        "ов": 53027,
+        "ен": 49807,
+        "ро": 44121,
+        "ал": 38525,
+        "ан": 37421,
+        "ск": 34589,
+        "на": 34049,
+        "ос": 33175,
+        "пр": 31551,
+        "ка": 30746,
+        "ор": 30164,
+        "ри": 28720,
+        "ел": 27996,
+        "го": 27811,
+        "ла": 27509,
+        "не": 27036,
+        "ле": 26782,
+        "во": 26541,
+        "то": 25434,
+        "ль": 24485
+      }
+    },
+    "word_stats": {
+      "total_words": 500000,
+      "words_analyzed": 484928,
+      "analysis_percent": 96.9856
+    }
+  },
+  "goodness_score": 0.7035519125683061,
+  "normalized_score": 0.5870088211708099
+}
